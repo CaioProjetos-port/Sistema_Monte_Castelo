@@ -19,6 +19,7 @@ namespace Monte_Castelo
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new Login(MainFrame));
         }
     }
 }
