@@ -20,9 +20,72 @@ namespace Monte_Castelo
     /// </summary>
     public partial class HomePage : Page
     {
+        bool btn1_on, btn2_on, btn3_on = false;
+
         public HomePage()
         {
             InitializeComponent();
+        }
+
+        void btn1Pressed(object sender, RoutedEventArgs e)
+        {
+            if (btn1_on)
+            {
+                btn1_on = false;
+                btn_menu_1.Style = (Style)FindResource("BotadoDeMenuLateral");
+            }
+            else
+            {
+                btn1_on = true;
+                btn_menu_1.Style = (Style)FindResource("BotadoDeMenuLateralActive");
+
+                btn2_on = false;
+                btn_menu_2.Style = (Style)FindResource("BotadoDeMenuLateral");
+
+                btn3_on = false;
+                btn_menu_3.Style = (Style)FindResource("BotadoDeMenuLateral");
+            }
+        }
+
+        void btn2Pressed(object sender, RoutedEventArgs e)
+        {
+            if (btn2_on)
+            {
+                btn2_on = false;
+                btn_menu_2.Style = (Style)FindResource("BotadoDeMenuLateral");
+            }
+            else
+            {
+                btn1_on = false;
+                btn_menu_1.Style = (Style)FindResource("BotadoDeMenuLateral");
+
+                btn2_on = true;
+                btn_menu_2.Style = (Style)FindResource("BotadoDeMenuLateralActive");
+
+                btn3_on = false;
+                btn_menu_3.Style = (Style)FindResource("BotadoDeMenuLateral");
+
+            }
+        }
+
+        void btn3Pressed(object sender, RoutedEventArgs e)
+        {
+            if (btn3_on)
+            {
+                btn3_on = false;
+                btn_menu_3.Style = (Style)FindResource("BotadoDeMenuLateral");
+            }
+            else
+            {
+                btn1_on = false;
+                btn_menu_1.Style = (Style)FindResource("BotadoDeMenuLateral");
+
+                btn2_on = false;
+                btn_menu_2.Style = (Style)FindResource("BotadoDeMenuLateral");
+
+                btn3_on = true;
+                btn_menu_3.Style = (Style)FindResource("BotadoDeMenuLateralActive");
+            }
         }
     }
 }

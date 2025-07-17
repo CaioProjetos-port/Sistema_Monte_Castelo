@@ -7,13 +7,17 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Login" Height="auto" Width="auto">
-    
-
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Margin="0,0,0,30" HorizontalAlignment="Center" Text="Senha de acesso" FontSize="20"/>
-
-        <PasswordBox x:Name="pswrd_box" Height="28" Width="200" VerticalContentAlignment="Center"/>
 
 
-    </StackPanel>
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Margin="0,0,0,30" HorizontalAlignment="Center" Text="Senha de acesso" FontSize="20"/>
+
+            <PasswordBox x:Name="pswrd_box" Height="28" Width="200" VerticalContentAlignment="Center"/>
+
+            <TextBlock x:Name="msg_erro_login" HorizontalAlignment="Left" Text="Senha incorreta" FontSize="14" Foreground="Red" Visibility="Hidden"/>
+
+            <Button x:Name="btn_login" Margin="0,40,0,0" Click="btn_login_Click" Content="Entrar" Height="30" Width="130" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
 </Page>

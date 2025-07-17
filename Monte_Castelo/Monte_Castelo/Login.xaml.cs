@@ -38,7 +38,7 @@ namespace Monte_Castelo
             }
             else
             {
-                MessageBox.Show("Senha incorreta");
+                msg_erro_login.Visibility = Visibility.Visible;
             }
         }
     }

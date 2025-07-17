@@ -8,7 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="HomePage">
 
-    <Grid Background="LightBlue">
-        <TextBlock Text="Bem-vindo!" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    <Grid Background="WhiteSmoke">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Column="0" Background="#fff">
+            <TextBlock Text="Menu" Margin="30,10,0,20" HorizontalAlignment="Left" FontSize="25"/>
+            <Button x:Name="btn_menu_1" Content="página 1" Click="btn1Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
+            <Button x:Name="btn_menu_2" Content="página 2" Click="btn2Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
+            <Button x:Name="btn_menu_3" Content="página 3" Click="btn3Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
+        </StackPanel>
     </Grid>
 </Page>

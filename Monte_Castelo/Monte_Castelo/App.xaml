@@ -3,7 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Monte_Castelo"
              StartupUri="MainWindow.xaml">
+
     <Application.Resources>
-         
+        <Style x:Key="BotadoDeMenuLateral" TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="#eee"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="Black"
+                                BorderThickness=".3 .3 1.5 2.5"
+                                CornerRadius="0 10 10 0"
+                                Padding="10"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="BotadoDeMenuLateralActive" TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="WhiteSmoke"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="Black"
+                                BorderThickness="2 2 1.5 1.5"
+                                CornerRadius="0 10 10 0"
+                                Padding="10"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
     </Application.Resources>
 </Application>
