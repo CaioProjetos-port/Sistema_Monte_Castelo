@@ -15,11 +15,9 @@ using System.Windows.Shapes;
 
 namespace Monte_Castelo
 {
-    /// <summary>
-    /// Interação lógica para HomePage.xam
-    /// </summary>
     public partial class HomePage : Page
     {
+        // variaveis que ditam se os botões foram pressionados ou não
         bool btn1_on, btn2_on, btn3_on = false;
 
         public HomePage()
@@ -27,6 +25,7 @@ namespace Monte_Castelo
             InitializeComponent();
         }
 
+        // fuñções que verificam manipulam o estilo dos botões ao serem pressionados
         void btn1Pressed(object sender, RoutedEventArgs e)
         {
             if (btn1_on)
@@ -38,6 +37,7 @@ namespace Monte_Castelo
             {
                 btn1_on = true;
                 btn_menu_1.Style = (Style)FindResource("BotadoDeMenuLateralActive");
+                PageFrame.Navigate(new PageAgenda());
 
                 btn2_on = false;
                 btn_menu_2.Style = (Style)FindResource("BotadoDeMenuLateral");

@@ -21,5 +21,7 @@
             <Button x:Name="btn_menu_2" Content="página 2" Click="btn2Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
             <Button x:Name="btn_menu_3" Content="página 3" Click="btn3Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
         </StackPanel>
+
+        <Frame x:Name="PageFrame" Grid.Column="1"/>
     </Grid>
 </Page>

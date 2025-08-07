@@ -24,3 +24,5 @@ E:\Caio\Programas\GitHub\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\D
 E:\Caio\Programas\GitHub\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\HomePage.g.cs
 E:\Caio\Programas\GitHub\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\HomePage.baml
 E:\Caio\Programas\GitHub\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\App.baml
+E:\Caio\Programas\GitHub\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\PageAgenda.g.cs
+E:\Caio\Programas\GitHub\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\PageAgenda.baml
