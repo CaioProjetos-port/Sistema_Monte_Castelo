@@ -55,6 +55,18 @@
             </Setter>
         </Style>
 
+        <Style x:Key="PageAgenda_TextBlockDeNovoEvento" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
 
+        <Style x:Key="PageAgenda_TextBoxDeNovoEvento" TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style x:Key="PageAgenda_ComboBoxDeNovoEvento" TargetType="ComboBox">
+            
+        </Style>
     </Application.Resources>
 </Application>

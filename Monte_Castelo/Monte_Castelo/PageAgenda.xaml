@@ -16,18 +16,169 @@
         </Grid.RowDefinitions>
 
         <!-- Título -->
-        <TextBlock Text="Agenda de Eventos" FontSize="36" FontWeight="Bold" Margin="30,10,0,20"/>
+        <TextBlock Text="Agenda de Eventos" FontSize="32" FontWeight="Bold" Margin="30,10,0,10"/>
 
         <!-- Lista de festas -->
         
         
         <!-- barra de opções -->
-        <Expander Grid.Row="2" Header="Novo Evento" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" IsExpanded="False" Background="AliceBlue">
-            <StackPanel>
-                <TextBlock Text="Item 1" />
-                <TextBlock Text="Item 2" />
-                <TextBlock Text="Item 3" />
-            </StackPanel>
+        <Expander Grid.Row="2"
+                  Header="Novo Evento"
+                  HorizontalAlignment="Stretch"
+                  IsExpanded="False"
+                  Background="LightYellow"
+                  FontSize="20"
+                  Padding="25 15">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                
+                <!-- Linha 1 informações do cliente -->
+                <StackPanel Grid.Row="0" Grid.Column="0">       <!-- Coluna 1 -->
+                    <TextBlock Text="Cliente" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="0" Grid.Column="1">       <!-- Coluna 2 -->
+                    <TextBlock Text="Aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="2">       <!-- Coluna 3 -->
+                    <TextBlock Text="Celular" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="3">       <!-- Coluna 4 -->
+                    <TextBlock Text="E-mail" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2">       <!-- Coluna 4 e 5 -->
+                    <TextBlock Text="Endereço" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <TextBlock Grid.Row="0" Grid.Column="6" Text="?"/>
+
+
+                <!-- Linha 2  informações da festa -->
+                <StackPanel Grid.Row="1" Grid.Column="0">       <!-- Coluna 1 -->
+                    <TextBlock Text="Tipo de festa" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <ComboBox Style="{StaticResource PageAgenda_ComboBoxDeNovoEvento}">
+                        <ComboBoxItem Content="Infantil"/>
+                        <ComboBoxItem Content="15 anos"/>
+                        <ComboBoxItem Content="Casamento"/>
+                        <ComboBoxItem Content="Outro"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1">       <!-- Coluna 2 -->
+                    <TextBlock Text="Tipo de festa (outro)" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2">       <!-- Coluna 3 -->
+                    <TextBlock Text="Tema" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="3">       <!-- Coluna 4 -->
+                    <TextBlock Text="Pacote" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <ComboBox Style="{StaticResource PageAgenda_ComboBoxDeNovoEvento}">
+                        <ComboBoxItem Content="Encanto"/>
+                        <ComboBoxItem Content="Encanto"/>
+                        <ComboBoxItem Content="Encanto"/>
+                        <ComboBoxItem Content="Não"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="4">       <!-- Coluna 5 -->
+                    <TextBlock Text="Data" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <DatePicker/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="5">       <!-- Coluna 5 -->
+                    <TextBlock Text="Horário" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+                
+                
+                <!-- Linha 3 sobre os convidados -->
+                <StackPanel Grid.Row="2" Grid.Column="0">       <!-- Coluna 1 -->
+                    <TextBlock Text="Convidados" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="1">       <!-- Coluna 2 -->
+                    <TextBlock Text="Crianças" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="2">       <!-- Coluna 3 -->
+                    <TextBlock Text="Não pagantes" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Grid.Column="3">       <!-- Coluna 4 -->
+                    <TextBlock Text="" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <!-- Linha 4 sobre o pagamento -->
+                <StackPanel Grid.Row="3" Grid.Column="0">
+                    <!-- Coluna 1 -->
+                    <TextBlock Text="Extras (valor)" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Grid.Column="1">
+                    <!-- Coluna 2 -->
+                    <TextBlock Text="Extras (descrição)" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Grid.Column="2">
+                    <!-- Coluna 3 -->
+                    <TextBlock Text="Entrada" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Grid.Column="3">
+                    <!-- Coluna 3 -->
+                    <TextBlock Text="Forma de pagamento" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Grid.Column="4">
+                    <!-- Coluna 4 -->
+                    <TextBlock Text="Parcelas" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="3" Grid.Column="5">
+                    <!-- Coluna 3 -->
+                    <TextBlock Text="Desconto" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+            </Grid>
         </Expander>
                     
     </Grid>
