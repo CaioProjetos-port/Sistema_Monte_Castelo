@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|e:\\caio\\programas\\github\\sistema_monte_castelo\\monte_castelo\\monte_castelo\\pageagenda.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|solutionrelative:monte_castelo\\pageagenda.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|e:\\caio\\programas\\github\\sistema_monte_castelo\\monte_castelo\\monte_castelo\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|solutionrelative:monte_castelo\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|e:\\caio\\programas\\github\\sistema_monte_castelo\\monte_castelo\\monte_castelo\\pageagenda.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|solutionrelative:monte_castelo\\pageagenda.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|e:\\caio\\programas\\github\\sistema_monte_castelo\\monte_castelo\\monte_castelo\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|solutionrelative:monte_castelo\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|e:\\caio\\programas\\github\\sistema_monte_castelo\\monte_castelo\\monte_castelo\\pageagenda.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|solutionrelative:monte_castelo\\pageagenda.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|e:\\caio\\programas\\github\\sistema_monte_castelo\\monte_castelo\\monte_castelo\\homepage.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -47,7 +47,7 @@
           ]
         },
         {
-          "DockedWidth": 157,
+          "DockedWidth": 187,
           "SelectedChildIndex": 2,
           "Children": [
             {
@@ -60,7 +60,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "PageAgenda.xaml",
               "DocumentMoniker": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml",
               "RelativeDocumentMoniker": "Monte_Castelo\\PageAgenda.xaml",
@@ -79,17 +79,18 @@
               "ToolTip": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\HomePage.xaml",
               "RelativeToolTip": "Monte_Castelo\\HomePage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-15T00:17:17.392Z"
+              "WhenOpened": "2025-07-15T00:17:17.392Z",
+              "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 283,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 253,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "App.xaml",
               "DocumentMoniker": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\App.xaml",
               "RelativeDocumentMoniker": "Monte_Castelo\\App.xaml",
@@ -109,7 +110,8 @@
               "RelativeToolTip": "Monte_Castelo\\HomePage.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-07-17T02:08:55.435Z"
+              "WhenOpened": "2025-07-17T02:08:55.435Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -119,9 +121,10 @@
               "RelativeDocumentMoniker": "Monte_Castelo\\HomePage.xaml.cs",
               "ToolTip": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\HomePage.xaml.cs",
               "RelativeToolTip": "Monte_Castelo\\HomePage.xaml.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACcAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-15T00:20:23.982Z"
+              "WhenOpened": "2025-07-15T00:20:23.982Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -131,7 +134,7 @@
               "RelativeDocumentMoniker": "Monte_Castelo\\PageAgenda.xaml",
               "ToolTip": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml",
               "RelativeToolTip": "Monte_Castelo\\PageAgenda.xaml",
-              "ViewState": "AgIAADUAAAAAAAAAAAAqwE4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-08-07T16:53:36.59Z",
               "EditorCaption": ""
@@ -144,9 +147,10 @@
               "RelativeDocumentMoniker": "Monte_Castelo\\PageAgenda.xaml.cs",
               "ToolTip": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml.cs",
               "RelativeToolTip": "Monte_Castelo\\PageAgenda.xaml.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-07T16:57:39.32Z"
+              "WhenOpened": "2025-08-07T16:57:39.32Z",
+              "EditorCaption": ""
             }
           ]
         }
