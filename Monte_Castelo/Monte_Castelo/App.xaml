@@ -82,17 +82,36 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="ComboBox">
                         <Grid>
-                            <ToggleButton 
-                                Grid.Column="2"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                Foreground="{TemplateBinding Foreground}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
+                            <Border 
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="0">
+                                <Grid>
+                                    <!-- Item selecionado -->
+                                    <ContentPresenter
+                                Margin="5,0,25,0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Content="{TemplateBinding SelectionBoxItem}" />
+
+                                    <!-- Botão da seta -->
+                                    <ToggleButton 
+                                HorizontalAlignment="Right"
+                                Width="20"
+                                Background="Transparent"
+                                BorderThickness="0"
                                 Focusable="false"
                                 IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                                 ClickMode="Press">
-                                <ContentPresenter/>
-                            </ToggleButton>
+                                        <Path 
+                                    Fill="Black"
+                                    Data="M 0 0 L 4 4 L 8 0 Z"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"/>
+                                    </ToggleButton>
+                                </Grid>
+                            </Border>
 
                             <Popup 
                                 Name="Popup"
@@ -115,7 +134,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <Style x:Key="PageAgenda_DatePickerDeNovoEvento" TargetType="DatePicker">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="FontWeight" Value="Light"/>
@@ -123,8 +142,29 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Margin" Value="10,6,10,25"/>
         </Style>
-        
 
-        
+        <Style x:Key="PageAgenda_ButtonDeNovoEvento" TargetType="Button">
+            <Setter Property="Margin" Value="15,10"/>
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="Black"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="10"
+                                SnapsToDevicePixels="True">
+                            <ContentPresenter 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>
