@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj": {}
+    "E:\\Caio\\Programas\\GitHub\\portifólio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj": {}
   },
   "projects": {
-    "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj": {
+    "E:\\Caio\\Programas\\GitHub\\portifólio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj",
+        "projectUniqueName": "E:\\Caio\\Programas\\GitHub\\portifólio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj",
         "projectName": "Monte_Castelo",
-        "projectPath": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj",
+        "projectPath": "E:\\Caio\\Programas\\GitHub\\portifólio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "E:\\Caio\\Programas\\GitHub\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\obj\\",
+        "outputPath": "E:\\Caio\\Programas\\GitHub\\portifólio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -68,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
