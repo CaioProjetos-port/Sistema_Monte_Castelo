@@ -26,11 +26,13 @@ namespace Monte_Castelo
             InitializeComponent();
         }
 
+        // Botão para calcular o valor da festa
         private void Button_Calcular( object sender, RoutedEventArgs e)
         {
             VerificarCalculo();
         }
-
+        
+        // Botão para salvar o evento
         private void Button_Salvar( object sender, RoutedEventArgs e)
         {
             if (VerificarCalculo() == 1)
@@ -42,27 +44,12 @@ namespace Monte_Castelo
             // SalvarEvento();
         }
 
+        // função que verifica se os campos numericos são validos
         private int VerificarCalculo()
         {
             // verifica se os campos estão vazios
             // se forem vazios, retorna true e fecha a função button_Calcular
-            string msg_erro = FuncoesDeVerificacao.VerificarCamposVazios(
-                xaml_pacote.Text,
-                xaml_qntd_convidados.Text,
-                xaml_qntd_convidados_np.Text,
-                xaml_extras_valor.Text,
-                xaml_forma_pagamento.Text,
-                xaml_valor_entrada.Text,
-                xaml_num_parcelas.Text,
-                xaml_valor_desconto.Text);
-
-            if (msg_erro != null)
-            {
-                MessageBox.Show(msg_erro);
-                return 1;
-            }
-
-            msg_erro = FuncoesDeVerificacao.VerificarValoresDiferentes(
+            string msg_erro = FuncoesDeVerificacao.VerificarCamposNumericos(
                 xaml_qntd_convidados.Text,
                 xaml_qntd_convidados_np.Text,
                 xaml_extras_valor.Text,
@@ -80,6 +67,7 @@ namespace Monte_Castelo
             return 0;
         }
 
+        // função para calcular os valores da festa
         private void CalcularValores()
         {
             string pacote_str = xaml_pacote.Text;
@@ -94,153 +82,25 @@ namespace Monte_Castelo
             float valor_final = 0;
 
             if (pacote_str == "Kids")
-            {
-                if (convidados_qntd < 60)   //  de 50 até 59
-                {
-                    pacote_vlr = ValoresPacotes.kids50;
-                    pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 50);
-                }
-                else if (convidados_qntd >= 60 && convidados_qntd < 70)     // de 60 até 69
-                {
-                    pacote_vlr = ValoresPacotes.kids60;
-                    pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 60);
-                }
-                else if (convidados_qntd >= 70 && convidados_qntd < 80)     // de 70 até 79
-                {
-                    pacote_vlr = ValoresPacotes.kids70;
-                    pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 70);
-                }
-                else if (convidados_qntd >= 80 && convidados_qntd < 90)     // de 80 até 89
-                {
-                    pacote_vlr = ValoresPacotes.kids80;
-                    pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 80);
-                }
-                else if (convidados_qntd >= 90 && convidados_qntd < 100)    // de 90 até 99
-                {
-                    pacote_vlr = ValoresPacotes.kids90;
-                    pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 90);
-                }
-                else if (convidados_qntd >= 100)                            // de 100 em diante
-                {
-                    pacote_vlr = ValoresPacotes.kids100;
-                    pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 100);
-                }
-            }
-
+                pacote_vlr = FuncoesDeVerificacao.ValorDoPacoteKids(convidados_qntd);
+            
             else if (pacote_str == "Sonho")
-            {
-                if (convidados_qntd < 60)   //  de 50 até 59
-                {
-                    pacote_vlr = ValoresPacotes.sonho50;
-                    pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 50);
-                }
-                else if (convidados_qntd >= 60 && convidados_qntd < 70)     // de 60 até 69
-                {
-                    pacote_vlr = ValoresPacotes.sonho60;
-                    pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 60);
-                }
-                else if (convidados_qntd >= 70 && convidados_qntd < 80)     // de 70 até 79
-                {
-                    pacote_vlr = ValoresPacotes.sonho70;
-                    pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 70);
-                }
-                else if (convidados_qntd >= 80 && convidados_qntd < 90)     // de 80 até 89
-                {
-                    pacote_vlr = ValoresPacotes.sonho80;
-                    pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 80);
-                }
-                else if (convidados_qntd >= 90 && convidados_qntd < 100)    // de 90 até 99
-                {
-                    pacote_vlr = ValoresPacotes.sonho90;
-                    pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 90);
-                }
-                else if (convidados_qntd >= 100)                            // de 100 em diante
-                {
-                    pacote_vlr = ValoresPacotes.sonho100;
-                    pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 100);
-                }
-            }
-
+                pacote_vlr = FuncoesDeVerificacao.ValorDoPacoteSonho(convidados_qntd);
+            
             else if (pacote_str == "Encanto")
-            {
-                if (convidados_qntd < 60)   //  de 50 até 59
-                {
-                    pacote_vlr = ValoresPacotes.encanto50;
-                    pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 50);
-                }
-                else if (convidados_qntd >= 60 && convidados_qntd < 70)     // de 60 até 69
-                {
-                    pacote_vlr = ValoresPacotes.encanto60;
-                    pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 60);
-                }
-                else if (convidados_qntd >= 70 && convidados_qntd < 80)     // de 70 até 79
-                {
-                    pacote_vlr = ValoresPacotes.encanto70;
-                    pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 70);
-                }
-                else if (convidados_qntd >= 80 && convidados_qntd < 90)     // de 80 até 89
-                {
-                    pacote_vlr = ValoresPacotes.encanto80;
-                    pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 80);
-                }
-                else if (convidados_qntd >= 90 && convidados_qntd < 100)    // de 90 até 99
-                {
-                    pacote_vlr = ValoresPacotes.encanto90;
-                    pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 90);
-                }
-                else if (convidados_qntd >= 100)                            // de 100 em diante
-                {
-                    pacote_vlr = ValoresPacotes.encanto100;
-                    pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 100);
-                }
-            }
+                pacote_vlr = FuncoesDeVerificacao.ValorDoPacoteEncanto(convidados_qntd);
 
             else if (pacote_str == "Reino")
-            {
-                if (convidados_qntd < 60)   //  de 50 até 59
-                {
-                    pacote_vlr = ValoresPacotes.reino50;
-                    pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 50);
-                }
-                else if (convidados_qntd >= 60 && convidados_qntd < 70)     // de 60 até 69
-                {
-                    pacote_vlr = ValoresPacotes.reino60;
-                    pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 60);
-                }
-                else if (convidados_qntd >= 70 && convidados_qntd < 80)     // de 70 até 79
-                {
-                    pacote_vlr = ValoresPacotes.reino70;
-                    pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 70);
-                }
-                else if (convidados_qntd >= 80 && convidados_qntd < 90)     // de 80 até 89
-                {
-                    pacote_vlr = ValoresPacotes.reino80;
-                    pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 80);
-                }
-                else if (convidados_qntd >= 90 && convidados_qntd < 100)    // de 90 até 99
-                {
-                    pacote_vlr = ValoresPacotes.reino90;
-                    pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 90);
-                }
-                else if (convidados_qntd >= 100)                            // de 100 em diante
-                {
-                    pacote_vlr = ValoresPacotes.reino100;
-                    pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 100);
-                }
-            }
-
-
+                pacote_vlr = FuncoesDeVerificacao.ValorDoPacoteReino(convidados_qntd);
 
             if (pagamento_str == "Crédito C/J")
             {
-                float taxa = (pacote_vlr + extras_vlr - entrada_vlr) * 0.05f;
+                float taxa = (pacote_vlr + extras_vlr - entrada_vlr) * ValoresPacotes.taxa_cartao;
                 valor_total = pacote_vlr + extras_vlr + taxa;
             }
             else
-            {
                 valor_total = pacote_vlr + extras_vlr;
-            }
-
+            
 
             float desconto_vlr;
             if (xaml_valor_desconto.Text.Contains("%"))
@@ -260,9 +120,10 @@ namespace Monte_Castelo
             xaml_valor_final.Text = "R$ " + valor_final.ToString("F2");
         }
 
+        // verifica se todos os campos de dados foram preenchidos
         private int VerificarDados()
         {
-            string msg_erro = FuncoesDeVerificacao.VerificarCamposDeDadosVazios(
+            string msg_erro = FuncoesDeVerificacao.VerificarCamposDeDados(
                 xaml_cliente.Text,
                 xaml_aniversariante.Text,
                 xaml_email.Text,
@@ -324,6 +185,9 @@ namespace Monte_Castelo
         public static float reino90 = 9822;
         public static float reino100 = 10768;
         public static float convidado_reino = 77;
+
+        // valor da taxa do cartão de crédito
+        public static float taxa_cartao = 0.05f;
     }
 
     public static class ExpressoesRegulares
@@ -331,106 +195,292 @@ namespace Monte_Castelo
         public static Regex regex_nomes = new Regex(@"^[\p{L}]+\s[\p{L}]+(\s?[\p{L}]*)*$");
         public static Regex regex_nome = new Regex(@"^[\p{L}]+(\s?[\p{L}]*)*$");
         public static Regex regex_email = new Regex(@"^[\w\.-]+@[\w\.-]+\.\w{2,}$");
-        public static Regex regex_endereco = new Regex(@"^$");
-        public static Regex regex_descricao = new Regex(@"^$");
-        public static Regex regex_data = new Regex(@"^$");
-        public static Regex regex_hora = new Regex(@"^$");
-        public static Regex regex_valores = new Regex(@"^$");
+        public static Regex regex_endereco = new Regex(@"^[\p{L}\d\s,.\-ºª]+$");
+        public static Regex regex_descricao = new Regex(@"^[\p{L}\d\s,.\-!?\(\)]{1,200}$");
+        public static Regex regex_data = new Regex(@"^(0[1-9]|[12]\d|3[01])/(0[1-9]|1[0-2])/(19|20)\d{2}$");
+        public static Regex regex_hora = new Regex(@"^([01]\d|2[0-3]):[0-5]\d$");
+        public static Regex regex_numeros = new Regex(@"^\d+$");
+        public static Regex regex_valores = new Regex(@"^\d+([,]\d+)?$");
+        public static Regex regex_valores_percentuais = new Regex(@"^\d+([,]\d{1,2})?%?$");
     }
 
     public class FuncoesDeVerificacao
     {
-        public static string VerificarCamposVazios(string pacotes, string convidados, string convidados_np, string extras, string pagamento, string entrada, string parcelas, string desconto)
+        public static string VerificarCamposNumericos(string convidados, string convidados_np, string extras, string entrada, string parcelas, string desconto)
         {
-            if (pacotes == "") 
-                return "insira o pacote";
-            else if (convidados == "")
-                return "insira a quantidade de convidados";
-            else if (convidados_np == "")
-                return "insira a quantidade de convidados não pagantes";
-            else if (extras == "")
-                return "insira o valor dos extras";
-            else if (pagamento == "")
-                return "insira a forma de pagamento";
-            else if (entrada == "")
-                return "insira o valor da entrada";
-            else if (parcelas == "")
-                return "insira o valor das parcelas";
-            else if (desconto == "")
-                return "insira o valor do desconto";
-            else return null;
-        }
+            string[] campos = {
+                convidados,
+                convidados_np,
+                extras,
+                entrada,
+                parcelas,
+                desconto
+            };
 
-        public static string VerificarValoresDiferentes(string convidados, string convidados_np, string extras, string entrada, string parcelas, string desconto)
-        {
-            if (int.TryParse(convidados, out int convidados_vlr))
+            Regex[] regex = {
+                ExpressoesRegulares.regex_numeros,
+                ExpressoesRegulares.regex_numeros,
+                ExpressoesRegulares.regex_valores,
+                ExpressoesRegulares.regex_valores,
+                ExpressoesRegulares.regex_numeros,
+                ExpressoesRegulares.regex_valores_percentuais,
+            };
+
+            for (int i = 0; i < campos.Length; i++)
             {
-                if (convidados_vlr < 50)
-                    return "Não há pacotes para menos de 50 convidados";
-
-                if (int.TryParse(convidados_np, out int convidados_np_vlr))
-                {
-                    if (convidados_np_vlr < 0)
-                        return "Quantidade de convidados não pagantes inválida";
-
-                    if ((convidados_vlr - convidados_np_vlr) < 50)
-                        return "Não há pacotes para menos de 50 convidados";
-                }
+                string msg = ValidarRegex(campos[i], regex[i], i + 9);
+                if (msg != null)
+                    return msg;
             }
-            else return "Quantidade de convidados inválida";
 
-            if (int.TryParse(extras, out int extras_vlr))
+            int convidados_int = int.Parse(convidados);
+            int convidados_np_int = int.Parse(convidados_np);
+            if (desconto.Contains("%"))
             {
-                if (extras_vlr < 0)
-                    return "Valor de extras inválido";
+                desconto = desconto.Replace("%", "");
+                float desconto_float = float.Parse(desconto);
+
+                if (desconto_float < 0 || desconto_float > 100)
+                    return "Valor do desconto inválido";
+
             }
-            else return "Valor de extras inválido";
 
-            if (int.TryParse(entrada, out int entrada_vlr))
-            {
-                if (entrada_vlr < 0)
-                    return "Valor da entrada inválido";
-            }
-            else return "Valor da entrada inválido";
+            if (convidados_int < 50)
+                return "Não há pacotes para menos de 50 convidados";
 
-            if (int.TryParse(parcelas, out int parcelas_vlr))
-            {
-                if (parcelas_vlr < 0)
-                    return "Valor das parcelas inválido";
-            }
-            else return "Valor das parcelas inválido";
-
-            int desconto_vlr;
-            if (desconto.Contains("%")){
-                desconto = desconto.Replace("%", "").Trim();
-
-                if (int.TryParse(desconto, out desconto_vlr))
-                {
-                    if (desconto_vlr < 0 || desconto_vlr > 100)
-                        return "Valor do desconto inválido";
-                }
-                else return "Valor do desconto inválido";
-            }
-            else if (!int.TryParse(desconto, out desconto_vlr))
-                return "Valor do desconto inválido";
-
+            if ((convidados_int - convidados_np_int) < 50)
+                return "Não há pacotes para menos de 50 convidados";
 
             return null;
         }
 
-        public static string VerificarCamposDeDadosVazios(string cliente, string aniversariante, string email, string endereço, string tipoFesta, string tipoFestaOutro, string tema, string data, string horario, string criancas, string extrasDescricao, string extrasValor)
+        public static string VerificarCamposDeDados(string cliente, string aniversariante, string email, string endereço, string tipoFesta, string tipoFestaOutro, string tema, string data, string horario, string criancas, string extrasDescricao, string extrasValor)
         {
-            Match match = ExpressoesRegulares.regex_nomes.Match(cliente);
-            if (!match.Success)
-                return "Nome do cliente ausente ou inválido";
+            string[] campos = {
+                cliente,
+                aniversariante,
+                email,
+                endereço,
+                //tipoFesta,
+                //tipoFestaOutro,
+                tema,
+                data,
+                horario,
+                criancas,
+                //extrasDescricao,
+                //extrasValor
+            };
 
-            match = ExpressoesRegulares.regex_nome.Match(aniversariante);
-            if (!match.Success)
-                return "Nome do aniversariante ausente ou inválido";
+            Regex[] regex = {
+                ExpressoesRegulares.regex_nomes,
+                ExpressoesRegulares.regex_nome,
+                ExpressoesRegulares.regex_email,
+                ExpressoesRegulares.regex_endereco,
+                ExpressoesRegulares.regex_descricao,
+                ExpressoesRegulares.regex_data,
+                ExpressoesRegulares.regex_hora,
+                ExpressoesRegulares.regex_numeros
+            };
 
-            match = ExpressoesRegulares.regex_email.Match(email);
+            for (int i = 0; i < campos.Length; i++)
+            {
+                string msg = ValidarRegex(campos[i], regex[i], i);
+                if (msg != null)
+                    return msg;
+            }
+
+            if (tipoFesta == "Outro" && tipoFestaOutro == "")
+                return "insira o tipo de festa";
+            else
+            {
+                string msg = ValidarRegex(tipoFestaOutro, regex[4], 8);
+                if (msg != null)
+                    return msg;
+            }
+
+            if (extrasDescricao == "" && extrasValor != "")
+                return "insira a descrição dos extras";
+            else if (extrasDescricao != "" && extrasValor == "")
+                return "insira o valor dos extras";
+
+            return null;
+        }
+
+        public static float ValorDoPacoteKids(int convidados_qntd)
+        {
+            float pacote_vlr = 0;
+
+            if (convidados_qntd < 60)   //  de 50 até 59
+            {
+                pacote_vlr = ValoresPacotes.kids50;
+                pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 50);
+            }
+            else if (convidados_qntd >= 60 && convidados_qntd < 70)     // de 60 até 69
+            {
+                pacote_vlr = ValoresPacotes.kids60;
+                pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 60);
+            }
+            else if (convidados_qntd >= 70 && convidados_qntd < 80)     // de 70 até 79
+            {
+                pacote_vlr = ValoresPacotes.kids70;
+                pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 70);
+            }
+            else if (convidados_qntd >= 80 && convidados_qntd < 90)     // de 80 até 89
+            {
+                pacote_vlr = ValoresPacotes.kids80;
+                pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 80);
+            }
+            else if (convidados_qntd >= 90 && convidados_qntd < 100)    // de 90 até 99
+            {
+                pacote_vlr = ValoresPacotes.kids90;
+                pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 90);
+            }
+            else if (convidados_qntd >= 100)                            // de 100 em diante
+            {
+                pacote_vlr = ValoresPacotes.kids100;
+                pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 100);
+            }
+
+            return pacote_vlr;
+        }
+
+        public static float ValorDoPacoteSonho(int convidados_qntd)
+        {
+            float pacote_vlr = 0;
+
+            if (convidados_qntd < 60)   //  de 50 até 59
+            {
+                pacote_vlr = ValoresPacotes.sonho50;
+                pacote_vlr += ValoresPacotes.convidado_kids * (convidados_qntd % 50);
+            }
+            else if (convidados_qntd >= 60 && convidados_qntd < 70)     // de 60 até 69
+            {
+                pacote_vlr = ValoresPacotes.sonho60;
+                pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 60);
+            }
+            else if (convidados_qntd >= 70 && convidados_qntd < 80)     // de 70 até 79
+            {
+                pacote_vlr = ValoresPacotes.sonho70;
+                pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 70);
+            }
+            else if (convidados_qntd >= 80 && convidados_qntd < 90)     // de 80 até 89
+            {
+                pacote_vlr = ValoresPacotes.sonho80;
+                pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 80);
+            }
+            else if (convidados_qntd >= 90 && convidados_qntd < 100)    // de 90 até 99
+            {
+                pacote_vlr = ValoresPacotes.sonho90;
+                pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 90);
+            }
+            else if (convidados_qntd >= 100)                            // de 100 em diante
+            {
+                pacote_vlr = ValoresPacotes.sonho100;
+                pacote_vlr += ValoresPacotes.convidado_sonho * (convidados_qntd % 100);
+            }
+
+            return pacote_vlr;
+        }
+
+        public static float ValorDoPacoteEncanto(int convidados_qntd)
+        {
+            float pacote_vlr = 0;
+
+            if (convidados_qntd < 60)   //  de 50 até 59
+            {
+                pacote_vlr = ValoresPacotes.encanto50;
+                pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 50);
+            }
+            else if (convidados_qntd >= 60 && convidados_qntd < 70)     // de 60 até 69
+            {
+                pacote_vlr = ValoresPacotes.encanto60;
+                pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 60);
+            }
+            else if (convidados_qntd >= 70 && convidados_qntd < 80)     // de 70 até 79
+            {
+                pacote_vlr = ValoresPacotes.encanto70;
+                pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 70);
+            }
+            else if (convidados_qntd >= 80 && convidados_qntd < 90)     // de 80 até 89
+            {
+                pacote_vlr = ValoresPacotes.encanto80;
+                pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 80);
+            }
+            else if (convidados_qntd >= 90 && convidados_qntd < 100)    // de 90 até 99
+            {
+                pacote_vlr = ValoresPacotes.encanto90;
+                pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 90);
+            }
+            else if (convidados_qntd >= 100)                            // de 100 em diante
+            {
+                pacote_vlr = ValoresPacotes.encanto100;
+                pacote_vlr += ValoresPacotes.convidado_encanto * (convidados_qntd % 100);
+            }
+
+            return pacote_vlr;
+        }
+
+        public static float ValorDoPacoteReino(int convidados_qntd)
+        {
+            float pacote_vlr = 0;
+
+            if (convidados_qntd < 60)   //  de 50 até 59
+            {
+                pacote_vlr = ValoresPacotes.reino50;
+                pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 50);
+            }
+            else if (convidados_qntd >= 60 && convidados_qntd < 70)     // de 60 até 69
+            {
+                pacote_vlr = ValoresPacotes.reino60;
+                pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 60);
+            }
+            else if (convidados_qntd >= 70 && convidados_qntd < 80)     // de 70 até 79
+            {
+                pacote_vlr = ValoresPacotes.reino70;
+                pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 70);
+            }
+            else if (convidados_qntd >= 80 && convidados_qntd < 90)     // de 80 até 89
+            {
+                pacote_vlr = ValoresPacotes.reino80;
+                pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 80);
+            }
+            else if (convidados_qntd >= 90 && convidados_qntd < 100)    // de 90 até 99
+            {
+                pacote_vlr = ValoresPacotes.reino90;
+                pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 90);
+            }
+            else if (convidados_qntd >= 100)                            // de 100 em diante
+            {
+                pacote_vlr = ValoresPacotes.reino100;
+                pacote_vlr += ValoresPacotes.convidado_reino * (convidados_qntd % 100);
+            }
+
+            return pacote_vlr;
+        }
+
+        private static string ValidarRegex(string campo, Regex regex, int index)
+        {
+            string[] erros = {
+                "Nome do cliente inválido", // indice 0, primeiro do loop campo de dados
+                "Nome do aniversariante inválido",
+                "Email inválido",
+                "Endereço inválido",
+                "Tema inválido",
+                "Data inválida",
+                "Hora inválida",
+                "Quantidade de convidados inválida", // indice 7, ultimo do loop campo de dados
+                "Preencha o tipo de festa", // indice 8, campo de dados aparte
+                "Quantidade de convidados inválida", // indice 9, primeiro do loop campo numerico
+                "Quantidade de convidados não pagantes inválida",
+                "Valor dos extras inválida",
+                "Valor da entrada inválida",
+                "Quantidade das parcelas inválida",
+                "Valor do desconto inválido" // indice 14, ultimo do loop campo numerico
+            };
+
+            Match match = regex.Match(campo);
             if (!match.Success)
-                return "E-mail inválido";
+                return erros[index];
 
             return null;
         }
