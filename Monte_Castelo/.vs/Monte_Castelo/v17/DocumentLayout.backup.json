@@ -11,8 +11,8 @@
       "RelativeMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|solutionrelative:monte_castelo\\pageagenda.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|e:\\caio\\programas\\github\\portif\u00F3lio\\sistema_monte_castelo\\monte_castelo\\monte_castelo\\pageagenda.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|solutionrelative:monte_castelo\\pageagenda.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|e:\\caio\\programas\\github\\portif\u00F3lio\\sistema_monte_castelo\\monte_castelo\\monte_castelo\\config\\regex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6A103D16-5C1C-44AD-A202-B190C5149B9B}|Monte_Castelo\\Monte_Castelo.csproj|solutionrelative:monte_castelo\\config\\regex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,13 +31,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PageAgenda.xaml",
-              "DocumentMoniker": "E:\\Caio\\Programas\\GitHub\\portif\u00F3lio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml",
-              "RelativeDocumentMoniker": "Monte_Castelo\\PageAgenda.xaml",
-              "ToolTip": "E:\\Caio\\Programas\\GitHub\\portif\u00F3lio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml",
-              "RelativeToolTip": "Monte_Castelo\\PageAgenda.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-09-18T03:36:16.998Z"
+              "Title": "Regex.cs",
+              "DocumentMoniker": "E:\\Caio\\Programas\\GitHub\\portif\u00F3lio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Config\\Regex.cs",
+              "RelativeDocumentMoniker": "Monte_Castelo\\Config\\Regex.cs",
+              "ToolTip": "E:\\Caio\\Programas\\GitHub\\portif\u00F3lio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Config\\Regex.cs",
+              "RelativeToolTip": "Monte_Castelo\\Config\\Regex.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-24T17:51:24.91Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -47,9 +49,10 @@
               "RelativeDocumentMoniker": "Monte_Castelo\\PageAgenda.xaml",
               "ToolTip": "E:\\Caio\\Programas\\GitHub\\portif\u00F3lio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml",
               "RelativeToolTip": "Monte_Castelo\\PageAgenda.xaml",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAAAIsAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEoAAABtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-09-18T03:36:46.181Z"
+              "WhenOpened": "2025-09-18T03:36:46.181Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -57,9 +60,9 @@
               "Title": "PageAgenda.xaml.cs",
               "DocumentMoniker": "E:\\Caio\\Programas\\GitHub\\portif\u00F3lio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml.cs",
               "RelativeDocumentMoniker": "Monte_Castelo\\PageAgenda.xaml.cs",
-              "ToolTip": "E:\\Caio\\Programas\\GitHub\\portif\u00F3lio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml.cs*",
-              "RelativeToolTip": "Monte_Castelo\\PageAgenda.xaml.cs*",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAAAMoAAAA+AAAAAAAAAA==",
+              "ToolTip": "E:\\Caio\\Programas\\GitHub\\portif\u00F3lio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\PageAgenda.xaml.cs",
+              "RelativeToolTip": "Monte_Castelo\\PageAgenda.xaml.cs",
+              "ViewState": "AgIAAAQBAAAAAAAAAAAYwCIBAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-18T03:37:09.815Z",
               "EditorCaption": ""
