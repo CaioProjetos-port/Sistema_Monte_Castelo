@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "SGPAaeMFufM=",
+  "dgSpecHash": "q25UMbrKf1g=",
   "success": true,
   "projectFilePath": "E:\\Caio\\Programas\\GitHub\\portifólio\\Sistema_Monte_Castelo\\Monte_Castelo\\Monte_Castelo\\Monte_Castelo.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\system.data.sqlite\\2.0.2\\system.data.sqlite.2.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

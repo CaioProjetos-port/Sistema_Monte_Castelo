@@ -54,3 +54,4 @@ E:\Caio\Programas\GitHub\portifólio\Sistema_Monte_Castelo\Monte_Castelo\Monte_C
 E:\Caio\Programas\GitHub\portifólio\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\Monte_Castelo.pdb
 E:\Caio\Programas\GitHub\portifólio\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\Monte_Castelo.genruntimeconfig.cache
 E:\Caio\Programas\GitHub\portifólio\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\ref\Monte_Castelo.dll
+E:\Caio\Programas\GitHub\portifólio\Sistema_Monte_Castelo\Monte_Castelo\Monte_Castelo\obj\Debug\net8.0-windows\Monte_Castelo.csproj.AssemblyReference.cache

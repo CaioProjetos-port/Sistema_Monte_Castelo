@@ -22,15 +22,20 @@
         <ListView Grid.Row="1" x:Name="lstFestas" ItemsSource="{Binding Festas}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Nome" Width="120" DisplayMemberBinding="{Binding Nome}" />
-                    <GridViewColumn Header="Data" Width="100" DisplayMemberBinding="{Binding Data}" />
-                    <GridViewColumn Header="Local" Width="150" DisplayMemberBinding="{Binding Local}" />
+                    <GridViewColumn Header="Cliente" Width="auto" DisplayMemberBinding="{Binding Cliente}" />
+                    <GridViewColumn Header="Aniversariante" Width="auto" DisplayMemberBinding="{Binding Aniversariante}" />
+                    <GridViewColumn Header="Data" Width="auto" DisplayMemberBinding="{Binding Data}" />
+                    <GridViewColumn Header="Hora" Width="auto" DisplayMemberBinding="{Binding Hora}" />
+                    <GridViewColumn Header="Tema" Width="auto" DisplayMemberBinding="{Binding Tema}" />
+                    <GridViewColumn Header="Convidados" Width="auto" DisplayMemberBinding="{Binding Convidados}" />
+                    <GridViewColumn Header="Pacote" Width="auto" DisplayMemberBinding="{Binding Pacote}" />
                 </GridView>
             </ListView.View>
         </ListView>
         
         <!-- barra de opções -->
         <Expander Grid.Row="2"
+                  x:Name="xaml_expander_novo_evento"
                   Header="Novo Evento"
                   HorizontalAlignment="Stretch"
                   IsExpanded="False"

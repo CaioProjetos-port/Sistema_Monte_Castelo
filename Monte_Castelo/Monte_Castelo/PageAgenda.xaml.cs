@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Monte_Castelo.Config;
+using System.Data.SQLite;
 
 namespace Monte_Castelo
 {
@@ -48,37 +49,16 @@ namespace Monte_Castelo
             if (VerificarDados() == 1)
                 return;
 
-            SalvarEvento.Salvar(
-                this,
-                xaml_cliente.Text,
-                xaml_aniversariante.Text,
-                xaml_celular.Text,
-                xaml_email.Text,
-                xaml_endereco.Text,
-                xaml_tipo_festa.Text,
-                xaml_tdf_outro.Text,
-                xaml_tema.Text,
-                xaml_data.Text,
-                xaml_horario.Text,
-                xaml_criancas.Text,
-                xaml_extras_descricao.Text,
-                xaml_extras_valor.Text,
-                xaml_qntd_convidados.Text,
-                xaml_qntd_convidados_np.Text,
-                xaml_pacote.Text,
-                xaml_forma_pagamento.Text,
-                xaml_valor_entrada.Text,
-                xaml_num_parcelas.Text,
-                xaml_valor_desconto.Text,
-                xaml_valor_total.Text
-                );
+            SalvarEvento.Salvar(this);
         }
 
+        // Função para salvar a ultima tecla pressionada no campo celular
         private void KeyPress(object sender, KeyEventArgs e)
         {
             _ultimaTecla = e.Key;
         }
 
+        // Função para formatar o campo celular em tempo real
         private void Formatacao_celular(object sender, TextChangedEventArgs e)
         {
             string numero = xaml_celular.Text;
@@ -93,13 +73,7 @@ namespace Monte_Castelo
         {
             // verifica se os campos estão vazios
             // se forem vazios, retorna true e fecha a função button_Calcular
-            string msg_erro = FuncoesDeVerificacao.VerificarCamposNumericos(
-                xaml_qntd_convidados.Text,
-                xaml_qntd_convidados_np.Text,
-                xaml_extras_valor.Text,
-                xaml_valor_entrada.Text,
-                xaml_num_parcelas.Text,
-                xaml_valor_desconto.Text);
+            string msg_erro = FuncoesDeVerificacao.VerificarCamposNumericos(this);
 
             if (msg_erro != null)
             {
@@ -167,21 +141,7 @@ namespace Monte_Castelo
         // verifica se todos os campos de dados foram preenchidos
         private int VerificarDados()
         {
-            string msg_erro = FuncoesDeVerificacao.VerificarCamposDeDados(
-                xaml_cliente.Text,
-                xaml_aniversariante.Text,
-                xaml_celular.Text,
-                xaml_email.Text,
-                xaml_endereco.Text,
-                xaml_tipo_festa.Text,
-                xaml_tdf_outro.Text,
-                xaml_tema.Text,
-                xaml_data.Text,
-                xaml_horario.Text,
-                xaml_criancas.Text,
-                xaml_extras_descricao.Text,
-                xaml_extras_valor.Text
-                );
+            string msg_erro = FuncoesDeVerificacao.VerificarCamposDeDados(this);
 
             if (msg_erro != null)
             {
@@ -195,15 +155,15 @@ namespace Monte_Castelo
 
     public class FuncoesDeVerificacao
     {
-        public static string VerificarCamposNumericos(string convidados, string convidados_np, string extras, string entrada, string parcelas, string desconto)
+        public static string VerificarCamposNumericos(PageAgenda pagina)
         {
             string[] campos = {
-                convidados,
-                convidados_np,
-                extras,
-                entrada,
-                parcelas,
-                desconto
+                pagina.xaml_qntd_convidados.Text,
+                pagina.xaml_qntd_convidados_np.Text,
+                pagina.xaml_extras_valor.Text,
+                pagina.xaml_valor_entrada.Text,
+                pagina.xaml_num_parcelas.Text,
+                pagina.xaml_valor_desconto.Text
             };
 
             Regex[] regex = {
@@ -214,6 +174,10 @@ namespace Monte_Castelo
                 RegexER.regex_numeros,
                 RegexER.regex_valores_percentuais,
             };
+
+            string convidados = campos[0];
+            string convidados_np = campos[1];
+            string desconto = campos[5];
 
             for (int i = 0; i < campos.Length; i++)
             {
@@ -243,17 +207,17 @@ namespace Monte_Castelo
             return null;
         }
 
-        public static string VerificarCamposDeDados(string cliente, string aniversariante, string celular, string email, string endereço, string tipoFesta, string tipoFestaOutro, string tema, string data, string horario, string criancas, string extrasDescricao, string extrasValor)
+        public static string VerificarCamposDeDados(PageAgenda pagina)
         {
             string[] campos = {
-                cliente,
-                aniversariante,
-                email,
-                endereço,
-                tema,
-                data,
-                horario,
-                criancas,
+                pagina.xaml_cliente.Text,
+                pagina.xaml_aniversariante.Text,
+                pagina.xaml_email.Text,
+                pagina.xaml_endereco.Text,
+                pagina.xaml_tema.Text,
+                pagina.xaml_data.Text,
+                pagina.xaml_horario.Text,
+                pagina.xaml_criancas.Text
             };
 
             Regex[] regex = {
@@ -266,6 +230,12 @@ namespace Monte_Castelo
                 RegexER.regex_hora,
                 RegexER.regex_numeros
             };
+
+            string tipoFesta = pagina.xaml_tipo_festa.Text;
+            string tipoFestaOutro = pagina.xaml_tdf_outro.Text;
+            string extrasDescricao = pagina.xaml_extras_descricao.Text;
+            string extrasValor = pagina.xaml_extras_valor.Text;
+            string celular = pagina.xaml_celular.Text;
 
             for (int i = 0; i < campos.Length; i++)
             {
@@ -506,30 +476,68 @@ namespace Monte_Castelo
 
     public class Festa
     {
-        public string Nome { get; set; }
+        public string Cliente { get; set; }
+        public string Aniversariante { get; set; }
         public string Data { get; set; }
-        public string Local { get; set; }
+        public string Hora { get; set; }
+        public string Tema { get; set; }
+        public string Convidados { get; set; }
+        public string Pacote { get; set; }
     }
 
     public class SalvarEvento
     {
-        public static void Salvar(PageAgenda pagina, string cliente, string aniversariante, string celular, string email, string endereco, string tipoDeFesta, string tdf_outro, string tema, string data, string horario, string criancas, string extr_desc, string extr_vlr, string qntd_convidados, string qntd_convidados_np, string pacote, string forma_pagamento, string valor_entrada, string num_parcelas, string valor_desconto, string valor_total)
+        public static void Salvar(PageAgenda pagina)
         {
-            AdicionarALista(pagina, cliente, aniversariante, tema, qntd_convidados, pacote, valor_total);
+            AdicionarALista(pagina);
+            LimparCampos(pagina);
+            //AdicionarAoBD(pagina);
         }
 
-        private static void AdicionarALista(PageAgenda pagina, string cliente, string aniversariante, string tema, string qntd_convidados, string pacote, string valor_total)
+        private static void AdicionarALista(PageAgenda pagina)
         {
             pagina.Festas.Add(new Festa
             {
-                Nome = cliente,
-                Data = aniversariante,
-                Local = tema,
+                Cliente = pagina.xaml_cliente.Text,
+                Aniversariante = pagina.xaml_aniversariante.Text,
+                Data = pagina.xaml_data.Text,
+                Hora = pagina.xaml_horario.Text,
+                Tema = pagina.xaml_tema.Text,
+                Convidados = pagina.xaml_qntd_convidados.Text,
+                Pacote = pagina.xaml_pacote.Text
             });
         }
 
-        private static void AdicionarAoBD()
+        private static void LimparCampos(PageAgenda pagina)
         {
+            pagina.xaml_cliente.Clear();
+            pagina.xaml_aniversariante.Clear();
+            pagina.xaml_celular.Clear();
+            pagina.xaml_email.Clear();
+            pagina.xaml_endereco.Clear();
+            pagina.xaml_tdf_outro.Clear();
+            pagina.xaml_tema.Clear();
+            pagina.xaml_horario.Clear();
+            pagina.xaml_qntd_convidados.Clear();
+            pagina.xaml_qntd_convidados_np.Clear();
+            pagina.xaml_criancas.Clear();
+            pagina.xaml_extras_descricao.Clear();
+            pagina.xaml_extras_valor.Clear();
+            pagina.xaml_valor_entrada.Clear();
+            pagina.xaml_num_parcelas.Clear();
+            pagina.xaml_valor_desconto.Clear();
+            pagina.xaml_valor_total.Text = "R$ 0,00";
+            pagina.xaml_valor_final.Text = "R$ 0,00";
+        }
+
+        private static void AdicionarAoBD(PageAgenda pagina)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(DB.conection))
+            {
+                conn.Open();
+                DB.CriarTabelasDeFestas();
+
+            }
 
         }
 
