@@ -16,10 +16,16 @@
         </Grid.RowDefinitions>
 
         <!-- Título -->
-        <TextBlock Grid.Row="0" Text="Clientes Cadastrados" FontSize="32" FontWeight="Bold" Margin="30,10,0,10"/>
+        <TextBlock Grid.Row="0" Background="#f8f8fd" Text="Clientes Cadastrados" FontSize="32" FontWeight="Bold" Padding="30,10,0,10"/>
 
         <!-- Lista de festas -->
-        <ListView Grid.Row="1" x:Name="xaml_lista_clientes" ItemsSource="{Binding Festas}">
+        <ListView Grid.Row="1"
+                  x:Name="xaml_lista_clientes"
+                  Loaded="ListaDeFestas_Loaded"
+                  Background="#f8f8fd"
+                  ItemsSource="{Binding Clientes}"
+                  Style="{StaticResource PageAgenda_ListViewDeFestas}">
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Cliente" Width="auto" DisplayMemberBinding="{Binding Cliente}" />
@@ -50,7 +56,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>mov to mp4
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>

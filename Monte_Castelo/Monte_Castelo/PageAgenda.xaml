@@ -22,11 +22,9 @@
         <ListView Grid.Row="1"
                   x:Name="xaml_lista_de_festas"
                   Loaded="ListaDeFestas_Loaded"
-                  BorderThickness="0"
                   Background="#f8f8fd"
                   ItemsSource="{Binding Festas}" 
                   Style="{StaticResource PageAgenda_ListViewDeFestas}">
-
 
             <ListView.View>
                 <GridView>

@@ -28,6 +28,31 @@ namespace Monte_Castelo
             InitializeComponent();
         }
 
+        private void ListaDeFestas_Loaded(object sender, RoutedEventArgs e)
+        {
+            AjustarColunas(xaml_lista_clientes);
+        }
+
+        private void AjustarColunas(ListView listView)
+        {
+            var gridView = listView.View as GridView;
+            if (gridView == null) return;
+
+            // desconta a largura da scrollbar vertical
+            double totalWidth = listView.ActualWidth - SystemParameters.VerticalScrollBarWidth;
+
+            // se quiser todas iguais
+            double colWidth = totalWidth / gridView.Columns.Count;
+
+            foreach (var col in gridView.Columns)
+            {
+                col.Width = colWidth;
+            }
+
+            xaml_lista_clientes.SizeChanged += (s, e) => AjustarColunas(xaml_lista_clientes);
+
+        }
+
         // Função para salvar a ultima tecla pressionada no campo celular
         private void KeyPress(object sender, KeyEventArgs e)
         {
