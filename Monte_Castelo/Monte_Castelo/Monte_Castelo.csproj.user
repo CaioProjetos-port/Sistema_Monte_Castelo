@@ -11,5 +11,8 @@
     <Compile Update="PageAgenda.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="PageCliente.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

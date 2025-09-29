@@ -16,19 +16,27 @@
         </Grid.RowDefinitions>
 
         <!-- Título -->
-        <TextBlock Grid.Row="0"  Text="Agenda de Eventos" FontSize="32" FontWeight="Bold" Margin="30,10,0,10"/>
+        <TextBlock Grid.Row="0" Background="#f8f8fd" Text="Agenda de Eventos" FontSize="32" FontWeight="Bold" Padding="30,10,0,10"/>
 
         <!-- Lista de festas -->
-        <ListView Grid.Row="1" x:Name="lstFestas" ItemsSource="{Binding Festas}">
+        <ListView Grid.Row="1"
+                  x:Name="xaml_lista_de_festas"
+                  Loaded="ListaDeFestas_Loaded"
+                  BorderThickness="0"
+                  Background="#f8f8fd"
+                  ItemsSource="{Binding Festas}" 
+                  Style="{StaticResource PageAgenda_ListViewDeFestas}">
+
+
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Cliente" Width="auto" DisplayMemberBinding="{Binding Cliente}" />
-                    <GridViewColumn Header="Aniversariante" Width="auto" DisplayMemberBinding="{Binding Aniversariante}" />
-                    <GridViewColumn Header="Data" Width="auto" DisplayMemberBinding="{Binding Data}" />
-                    <GridViewColumn Header="Hora" Width="auto" DisplayMemberBinding="{Binding Hora}" />
-                    <GridViewColumn Header="Tema" Width="auto" DisplayMemberBinding="{Binding Tema}" />
-                    <GridViewColumn Header="Convidados" Width="auto" DisplayMemberBinding="{Binding Convidados}" />
-                    <GridViewColumn Header="Pacote" Width="auto" DisplayMemberBinding="{Binding Pacote}" />
+                    <GridViewColumn Header="Cliente" DisplayMemberBinding="{Binding Cliente}" />
+                    <GridViewColumn Header="Aniversariante" DisplayMemberBinding="{Binding Aniversariante}" />
+                    <GridViewColumn Header="Data" DisplayMemberBinding="{Binding Data}" />
+                    <GridViewColumn Header="Hora" DisplayMemberBinding="{Binding Hora}" />
+                    <GridViewColumn Header="Tema" DisplayMemberBinding="{Binding Tema}" />
+                    <GridViewColumn Header="Convidados" DisplayMemberBinding="{Binding Convidados}" />
+                    <GridViewColumn Header="Pacote" DisplayMemberBinding="{Binding Pacote}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -52,7 +60,6 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
@@ -66,8 +73,8 @@
                 
                 <!-- Linha 1 informações do cliente -->
                 <StackPanel Grid.Row="0" Grid.Column="0">       <!-- Coluna 1 -->
-                    <TextBlock Text="Cliente" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_cliente" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="CPF do Cliente" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_cpf" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
                 
                 <StackPanel Grid.Row="0" Grid.Column="1">       <!-- Coluna 2 -->
@@ -76,23 +83,11 @@
                 </StackPanel>
 
                 <StackPanel Grid.Row="0" Grid.Column="2">       <!-- Coluna 3 -->
-                    <TextBlock Text="Celular (apenas números)" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_celular" TextChanged="Formatacao_celular" PreviewKeyDown="KeyPress" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="Idade do Aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_idade" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="0" Grid.Column="3">       <!-- Coluna 4 -->
-                    <TextBlock Text="E-mail" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_email" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
-                </StackPanel>
-
-                <StackPanel Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2">       <!-- Coluna 4 e 5 -->
-                    <TextBlock Text="Endereço" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_endereco" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
-                </StackPanel>
-
-                <TextBlock Grid.Row="0" Grid.Column="6" Text="?"/>
-
-
+                
                 <!-- Linha 2  informações da festa -->
                 <StackPanel Grid.Row="1" Grid.Column="0">       <!-- Coluna 1 -->
                     <TextBlock Text="Tipo de festa" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>

@@ -17,9 +17,10 @@
 
         <StackPanel Grid.Column="0" Background="#fff">
             <TextBlock Text="Menu" Margin="30,10,0,20" HorizontalAlignment="Left" FontSize="25"/>
-            <Button x:Name="btn_menu_1" Content="página 1" Click="btn1Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
-            <Button x:Name="btn_menu_2" Content="página 2" Click="btn2Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
-            <Button x:Name="btn_menu_3" Content="página 3" Click="btn3Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
+            <Button x:Name="btn_menu_1" Content="Agenda de Eventos" Click="btn1Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
+            <Button x:Name="btn_menu_2" Content="Clientes" Click="btn2Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
+            <Button x:Name="btn_menu_3" Content="Funcionários" Click="btn3Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
+            <Button x:Name="btn_menu_4" Content="Pagamentos" Click="btn4Pressed" Style="{StaticResource BotadoDeMenuLateral}"/>
         </StackPanel>
 
         <Frame x:Name="PageFrame" Grid.Column="1"/>

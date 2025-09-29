@@ -9,6 +9,7 @@ namespace Monte_Castelo.Config
 {
     internal class RegexER
     {
+            public static Regex regex_cpf = new Regex(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$");
             public static Regex regex_nomes = new Regex(@"^[\p{L}]+\s[\p{L}]+(\s?[\p{L}]*)*$");
             public static Regex regex_nome = new Regex(@"^[\p{L}]+(\s?[\p{L}]*)*$");
             public static Regex regex_email = new Regex(@"^[\w\.-]+@[\w\.-]+\.\w{2,}$");

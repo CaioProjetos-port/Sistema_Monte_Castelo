@@ -1,0 +1,100 @@
+﻿<Page x:Class="Monte_Castelo.PageCliente"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Monte_Castelo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageCliente">
+
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Título -->
+        <TextBlock Grid.Row="0" Text="Clientes Cadastrados" FontSize="32" FontWeight="Bold" Margin="30,10,0,10"/>
+
+        <!-- Lista de festas -->
+        <ListView Grid.Row="1" x:Name="xaml_lista_clientes" ItemsSource="{Binding Festas}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Cliente" Width="auto" DisplayMemberBinding="{Binding Cliente}" />
+                    <GridViewColumn Header="Celular" Width="auto" DisplayMemberBinding="{Binding Celular}" />
+                    <GridViewColumn Header="Email" Width="auto" DisplayMemberBinding="{Binding Email}" />
+                    <GridViewColumn Header="Endereço" Width="auto" DisplayMemberBinding="{Binding Endereço}" />
+                    <GridViewColumn Header="CPF" Width="auto" DisplayMemberBinding="{Binding CPF}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <!-- barra de opções -->
+        <Expander Grid.Row="2"
+              x:Name="xaml_expander_novo_evento"
+              Header="Novo Evento"
+              HorizontalAlignment="Stretch"
+              IsExpanded="False"
+              Background="LightBlue"
+              FontSize="20"
+              FontWeight="Medium"
+              Padding="30,15,30,35">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>mov to mp4
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Linha 1 informações do cliente -->
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <!-- Coluna 1 -->
+                    <TextBlock Text="Cliente" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_cliente" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <!-- Coluna 2 -->
+                    <TextBlock Text="Aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_aniversariante" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="2">
+                    <!-- Coluna 3 -->
+                    <TextBlock Text="Celular (apenas números)" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_celular" TextChanged="Formatacao_celular" PreviewKeyDown="KeyPress" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="3">
+                    <!-- Coluna 4 -->
+                    <TextBlock Text="E-mail" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_email" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2">
+                    <!-- Coluna 4 e 5 -->
+                    <TextBlock Text="Endereço" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_endereco" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <!-- Linha 5 botões de ação -->
+                <Button Grid.Row="4" Grid.Column="5" Content="Salvar Cliente" Style="{StaticResource PageAgenda_ButtonDeNovoEvento}"/>
+            </Grid>
+        </Expander>
+    </Grid>
+</Page>
