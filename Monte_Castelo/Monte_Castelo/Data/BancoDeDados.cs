@@ -11,18 +11,31 @@ namespace Monte_Castelo.Data
 {
     internal class BancoDeDados
     {
-        public static void CriarTabelasAgendamento(SQLiteConnection conn)
+        public static void CriarTabelasAgendamento(SQLiteConnection conn)   // REFAZER TABELAS E SEUS DADOS (descapitalizar, usar constraings e tiggers, usar BD PostgreSQL, criar mais telas no Agendamento de festa para separar as informações)
         {
             using (var cmd = conn.CreateCommand())
             {
                 // Tabela do Cliente
                 cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Cliente (
-                                    CPF INTEGER PRIMARY KEY,
+                                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    CPF INTEGER NOT NULL,
                                     Nome TEXT NOT NULL,
-                                    Telefone TEXT NOT NULL,
-                                    Email TEXT NOT NULL,
-                                    Endereco TEXT NOT NULL
+                                    SobreNome TEXT NOT NULL,
+                                    celular INTEGER NOT NULL,
+                                    email TEXT NOT NULL,
+                                    cep INTEGER NOT NULL
+                                    numCasa INTEGER
+                                    complemento TEXT
                                     )";
+                cmd.ExecuteNonQuery();
+
+                // Tabela de Aniversariante
+                cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Aniversariante (
+                                  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                                  Nome TEXT NOT NULL,
+                                  SobreNome TEXT NOT NULL,
+                                  Nascimento TEXT NOT NULL,
+                                  )";
                 cmd.ExecuteNonQuery();
 
                 // Tabela do Pagamento Previsto
@@ -131,6 +144,25 @@ namespace Monte_Castelo.Data
                 cmd.Parameters.AddWithValue("@extrasVlr", pagina.xaml_extras_valor.Text);
                 cmd.Parameters.AddWithValue("@cliente", pagina.xaml_cpf.Text);
                 cmd.Parameters.AddWithValue("@pagamentoPrev", PagamentoID);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void SalvarCliente(SQLiteConnection conn, PageCliente pagina)
+        {
+            using (var cmd = conn.CreateCommand())
+            {
+                // Salvar Cliente
+                cmd.CommandText = @"INSERT INTO Cliente (cpf, nome, sobreNome, celular, email, cep, numCasa, complemento)
+                                    VALUES (@cpf, @nome, @sobreNome, @celular, @email, @cep, @numCasa, @complemento)";
+                cmd.Parameters.AddWithValue("@cpf", pagina.xaml_cpf.Text);
+                cmd.Parameters.AddWithValue("@nome", pagina.xaml_nome.Text);
+                cmd.Parameters.AddWithValue("@sobreNome", pagina.xaml_sobreNome.Text);
+                cmd.Parameters.AddWithValue("@celular", pagina.xaml_celular.Text);
+                cmd.Parameters.AddWithValue("@email", pagina.xaml_email.Text);
+                cmd.Parameters.AddWithValue("@cep", pagina.xaml_cep.Text);
+                cmd.Parameters.AddWithValue("@numCasa", pagina.xaml_numCasa.Text);
+                cmd.Parameters.AddWithValue("@complemento", pagina.xaml_complemento.Text);
                 cmd.ExecuteNonQuery();
             }
         }

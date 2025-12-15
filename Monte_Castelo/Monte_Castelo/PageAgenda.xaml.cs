@@ -181,10 +181,10 @@ namespace Monte_Castelo
         public static void Salvar(PageAgenda pagina)
         {
             bool confirm;
-            LimparCampos(pagina);
             confirm = AdicionarAoBD(pagina);
 
             if (confirm)
+                LimparCampos(pagina);
                 IniciarListaDeFestas(pagina);
         }
 

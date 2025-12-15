@@ -20,7 +20,7 @@
 
         <!-- Lista de festas -->
         <ListView Grid.Row="1"
-                  x:Name="xaml_lista_clientes"
+                  x:Name="xaml_listaClientes"
                   Loaded="ListaDeFestas_Loaded"
                   Background="#f8f8fd"
                   ItemsSource="{Binding Clientes}"
@@ -63,43 +63,60 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
                 <!-- Linha 1 informações do cliente -->
                 <StackPanel Grid.Row="0" Grid.Column="0">
                     <!-- Coluna 1 -->
-                    <TextBlock Text="Cliente" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_cliente" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="CPF" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_cpf" TextChanged="Formatacao_cpf" PreviewKeyDown="KeyPress" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="0" Grid.Column="1">
                     <!-- Coluna 2 -->
-                    <TextBlock Text="Aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_aniversariante" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="Nome" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_nome" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="0" Grid.Column="2">
                     <!-- Coluna 3 -->
-                    <TextBlock Text="Celular (apenas números)" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_celular" TextChanged="Formatacao_celular" PreviewKeyDown="KeyPress" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="Sobrenome" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_sobreNome" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="0" Grid.Column="3">
                     <!-- Coluna 4 -->
-                    <TextBlock Text="E-mail" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_email" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="DDD + Celular" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_celular" TextChanged="Formatacao_celular" PreviewKeyDown="KeyPress" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="2">
                     <!-- Coluna 4 e 5 -->
-                    <TextBlock Text="Endereço" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_endereco" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="Email" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_email" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <!-- Linha 1 informações de endereço -->
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <!-- Coluna 1 -->
+                    <TextBlock Text="CEP" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_cep" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <!-- Coluna 2 -->
+                    <TextBlock Text="Numero da casa" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_numCasa" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2"  Grid.ColumnSpan="2">
+                    <!-- Coluna 3 -->
+                    <TextBlock Text="Complemento" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_complemento" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
 
                 <!-- Linha 5 botões de ação -->
-                <Button Grid.Row="4" Grid.Column="5" Content="Salvar Cliente" Style="{StaticResource PageAgenda_ButtonDeNovoEvento}"/>
+                <Button Grid.Row="1" Grid.Column="5" Content="Salvar Cliente" Click="salvarCliente" Style="{StaticResource PageAgenda_ButtonDeNovoEvento}"/>
             </Grid>
         </Expander>
     </Grid>

@@ -119,29 +119,52 @@ namespace Monte_Castelo.Data
             if (celular.Length == 2 && k != Key.Back)
                 celular = "(" + celular.Substring(0, 2) + ")";
 
-            if (celular.Length == 4 && k != Key.Back)
+            else if (celular.Length == 4 && k != Key.Back)
             {
                 celular = celular.Replace("(", "").Replace(")", "");
                 celular = "(" + celular.Substring(0, 2) + ")";
             }
 
-            if (celular.Length == 12)
+            else if (celular.Length == 12)
             {
                 celular = celular.Replace(".", "").Replace("-", "");
                 celular = celular.Insert(8, "-");
             }
 
-            if (celular.Length == 14 && k != Key.Back)
+            else if (celular.Length == 14 && k != Key.Back)
             {
                 celular = celular.Replace(".", "").Replace("-", "");
                 celular = celular.Insert(5, ".").Insert(10, "-");
             }
 
-            if (celular.Length > 15)
+            else if (celular.Length > 15)
                 return celular.Substring(0, 14);
 
             return celular;
             // (88)9.8155-5424
+        }
+
+        public static string FormatarCpf(string cpf, Key k)
+        {
+            if (cpf.Length == 3 && k != Key.Back)
+                cpf = cpf + ".";
+
+            else if (cpf.Length == 7 && k != Key.Back)
+                cpf = cpf + ".";
+
+            else if (cpf.Length == 11 && k != Key.Back)
+                cpf = cpf + "-";
+
+            if (cpf[3] != '.')
+                cpf = cpf.Insert(3, ".");
+
+            if (cpf[7] != '.')
+                cpf = cpf.Insert(7, ".");
+
+            if (cpf[11] != '-')
+                cpf = cpf.Insert(11, "-");
+
+            return cpf;
         }
 
         public static float ValorDoPacoteKids(int convidados_qntd)

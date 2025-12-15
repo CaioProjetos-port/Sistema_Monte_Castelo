@@ -1,6 +1,9 @@
-﻿using Monte_Castelo.Data;
+﻿using Monte_Castelo.Config;
+using Monte_Castelo.Data;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,11 +31,13 @@ namespace Monte_Castelo
             InitializeComponent();
         }
 
+        // Função para completar os dados da ListView
         private void ListaDeFestas_Loaded(object sender, RoutedEventArgs e)
         {
-            AjustarColunas(xaml_lista_clientes);
+            AjustarColunas(xaml_listaClientes);
         }
 
+        // Função para ajustar as colunas da ListView
         private void AjustarColunas(ListView listView)
         {
             var gridView = listView.View as GridView;
@@ -49,7 +54,7 @@ namespace Monte_Castelo
                 col.Width = colWidth;
             }
 
-            xaml_lista_clientes.SizeChanged += (s, e) => AjustarColunas(xaml_lista_clientes);
+            xaml_listaClientes.SizeChanged += (s, e) => AjustarColunas(xaml_listaClientes);
 
         }
 
@@ -68,5 +73,92 @@ namespace Monte_Castelo
                 xaml_celular.Text = FuncoesDeVerificacao.FormatarNumCelular(numero, _ultimaTecla);
             xaml_celular.CaretIndex = xaml_celular.Text.Length;
         }
+
+        private void Formatacao_cpf(object sender, TextChangedEventArgs e)
+        {
+            string cpf = xaml_cpf.Text;
+
+            if (cpf.Length > 0)
+            
+                xaml_cpf.Text = FuncoesDeVerificacao.FormatarCpf(cpf, _ultimaTecla);
+            xaml_cpf.CaretIndex = xaml_cpf.Text.Length;
+            
+        }
+
+        // Função para salvar o cliente no banco de dados
+        private void salvarCliente(object sender, RoutedEventArgs e)
+        {
+
+            SalvarCliente.Salvar(this);
+        }
+
     }
+
+    public class SalvarCliente
+    {
+        public static void Salvar(PageCliente pagina)
+        {
+            bool confirm;
+            confirm = AdicionarAoBD(pagina);
+
+            if (confirm)
+                LimparCampos(pagina);
+            IniciarListaDeClientes(pagina);
+        }
+
+        private static void LimparCampos(PageCliente pagina)
+        {
+            pagina.xaml_cpf.Clear();
+            pagina.xaml_nome.Clear();
+            pagina.xaml_sobreNome.Clear();
+            pagina.xaml_celular.Clear();
+            pagina.xaml_cep.Clear();
+            pagina.xaml_numCasa.Clear();
+            pagina.xaml_complemento.Clear();
+            pagina.xaml_email.Clear();
+        }
+
+        private static bool AdicionarAoBD(PageCliente pagina)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(Acesso.conection))
+            {
+                conn.Open();
+
+                using (var transaction = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        BancoDeDados.CriarTabelasAgendamento(conn);
+
+                        bool cliente = BancoDeDados.VerificarSeClienteExiste(conn, pagina.xaml_cpf.Text);
+                        if (!cliente)
+                        {
+                            MessageBox.Show("Já há um cliente cadastrado com esse CPF.");
+                            return false;
+                        }
+
+                        BancoDeDados.SalvarCliente(conn, pagina);
+
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        public static void IniciarListaDeClientes(PageCliente pagina)
+        {
+            ObservableCollection<Festa> listaDeFestas = new ObservableCollection<Festa>();
+
+            listaDeFestas = BancoDeDados.RetornarInformacoesDaListaDeFestas(listaDeFestas);
+
+            pagina.xaml_listaClientes.ItemsSource = listaDeFestas;
+        }
+    }
+
 }
