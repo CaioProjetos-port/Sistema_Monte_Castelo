@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Monte_Castelo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c42d2a1e68c376cefc97ef4b8f1d08c523c7a7b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b7702e2ae66d3e3a9eced1444cb1b1847b24932b")]
 [assembly: System.Reflection.AssemblyProductAttribute("Monte_Castelo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Monte_Castelo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

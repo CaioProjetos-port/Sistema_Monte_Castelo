@@ -229,7 +229,7 @@ namespace Monte_Castelo {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Monte_Castelo;component/pageagenda.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Monte_Castelo;V1.0.0.0;component/pageagenda.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\PageAgenda.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

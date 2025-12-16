@@ -1,9 +1,9 @@
 ﻿using Monte_Castelo.Config;
 using Monte_Castelo.Data;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,7 +120,7 @@ namespace Monte_Castelo
 
         private static bool AdicionarAoBD(PageCliente pagina)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(Acesso.conection))
+            using (NpgsqlConnection conn = new NpgsqlConnection(Acesso.conection))
             {
                 conn.Open();
 
@@ -128,8 +128,6 @@ namespace Monte_Castelo
                 {
                     try
                     {
-                        BancoDeDados.CriarTabelasAgendamento(conn);
-
                         bool cliente = BancoDeDados.VerificarSeClienteExiste(conn, pagina.xaml_cpf.Text);
                         if (!cliente)
                         {

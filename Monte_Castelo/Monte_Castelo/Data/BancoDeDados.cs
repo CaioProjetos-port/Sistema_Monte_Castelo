@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +10,7 @@ namespace Monte_Castelo.Data
 {
     internal class BancoDeDados
     {
-        public static void CriarTabelasAgendamento(SQLiteConnection conn)   // REFAZER TABELAS E SEUS DADOS (, usar constraings e tiggers, usar BD PostgreSQL, criar mais telas no Agendamento de festa para separar as informações)
+        public static void CriarTabelasAgendamento(SQLiteConnection conn)   // REFAZER TABELAS E SEUS DADOS (usar constraings e tiggers, criar mais telas no Agendamento de festa para separar as informações)
         {
             using (var cmd = conn.CreateCommand())
             {

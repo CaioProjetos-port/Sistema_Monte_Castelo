@@ -133,7 +133,7 @@ namespace Monte_Castelo {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Monte_Castelo;component/pagecliente.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Monte_Castelo;V1.0.0.0;component/pagecliente.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\PageCliente.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
