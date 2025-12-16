@@ -160,5 +160,4 @@ namespace Monte_Castelo
             pagina.xaml_listaClientes.ItemsSource = listaDeFestas;
         }
     }
-
 }

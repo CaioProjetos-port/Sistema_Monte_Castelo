@@ -11,16 +11,16 @@ namespace Monte_Castelo.Data
 {
     internal class BancoDeDados
     {
-        public static void CriarTabelasAgendamento(SQLiteConnection conn)   // REFAZER TABELAS E SEUS DADOS (descapitalizar, usar constraings e tiggers, usar BD PostgreSQL, criar mais telas no Agendamento de festa para separar as informações)
+        public static void CriarTabelasAgendamento(SQLiteConnection conn)   // REFAZER TABELAS E SEUS DADOS (, usar constraings e tiggers, usar BD PostgreSQL, criar mais telas no Agendamento de festa para separar as informações)
         {
             using (var cmd = conn.CreateCommand())
             {
                 // Tabela do Cliente
                 cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Cliente (
-                                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    CPF INTEGER NOT NULL,
-                                    Nome TEXT NOT NULL,
-                                    SobreNome TEXT NOT NULL,
+                                    id_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    cpf INTEGER NOT NULL,
+                                    nome TEXT NOT NULL,
+                                    sobreNome TEXT NOT NULL,
                                     celular INTEGER NOT NULL,
                                     email TEXT NOT NULL,
                                     cep INTEGER NOT NULL
@@ -31,7 +31,7 @@ namespace Monte_Castelo.Data
 
                 // Tabela de Aniversariante
                 cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Aniversariante (
-                                  ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                                  id_aniversariante INTEGER PRIMARY KEY AUTOINCREMENT,
                                   Nome TEXT NOT NULL,
                                   SobreNome TEXT NOT NULL,
                                   Nascimento TEXT NOT NULL,
@@ -40,33 +40,33 @@ namespace Monte_Castelo.Data
 
                 // Tabela do Pagamento Previsto
                 cmd.CommandText = @"CREATE TABLE IF NOT EXISTS PagamentoPrev (
-                                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    FormaPagamento TEXT NOT NULL,
-                                    Entrada REAL NOT NULL,
-                                    Parcelas INTEGER NOT NULL,
-                                    Desconto REAL NOT NULL,
-                                    ValorTotal REAL NOT NULL,
-                                    ValorFinal REAL NOT NULL
+                                    id_pagamento INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    formaPagamento TEXT NOT NULL,
+                                    entrada REAL NOT NULL,
+                                    parcelas INTEGER NOT NULL,
+                                    desconto REAL NOT NULL,
+                                    valorTotal REAL NOT NULL,
+                                    valorFinal REAL NOT NULL
                                     )";
                 cmd.ExecuteNonQuery();
 
                 // Tabela da Festa
                 cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Festa (
-                                    ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                                    Aniversariante TEXT NOT NULL,
-                                    Idade INTEGER NOT NULL,
-                                    Tipo TEXT NOT NULL,
-                                    Tema TEXT NOT NULL,
-                                    Pacote TEXT NOT NULL,
-                                    Data TEXT NOT NULL,
-                                    Hora TEXT NOT NULL,
-                                    Convidados INTEGER NOT NULL,
-                                    ConvidadosNP INTEGER NOT NULL,
-                                    Criancas INTEGER NOT NULL,
-                                    ExtrasDesc TEXT,
-                                    ExtrasVlr REAL,
-                                    Cliente INTEGER NOT NULL,
-                                    PagamentoPrev INTEGER NOT NULL,
+                                    id_festa INTEGER PRIMARY KEY AUTOINCREMENT,
+                                    aniversariante TEXT NOT NULL,
+                                    idade INTEGER NOT NULL,
+                                    tipo TEXT NOT NULL,
+                                    tema TEXT NOT NULL,
+                                    pacote TEXT NOT NULL,
+                                    data TEXT NOT NULL,
+                                    hora TEXT NOT NULL,
+                                    convidados INTEGER NOT NULL,
+                                    convidadosNP INTEGER NOT NULL,
+                                    criancas INTEGER NOT NULL,
+                                    extrasDesc TEXT,
+                                    extrasVlr REAL,
+                                    cliente INTEGER NOT NULL,
+                                    pagamentoPrev INTEGER NOT NULL,
                                     FOREIGN KEY (Cliente) REFERENCES Cliente(CPF),
                                     FOREIGN KEY (PagamentoPrev) REFERENCES PagamentoPrev(ID)
                                     )";
@@ -201,3 +201,5 @@ namespace Monte_Castelo.Data
         }
     }
 }
+
+
