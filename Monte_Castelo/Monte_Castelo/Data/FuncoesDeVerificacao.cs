@@ -66,9 +66,11 @@ namespace Monte_Castelo.Data
         public static string VerificarCamposDeDados(PageAgenda pagina)
         {
             string[] campos = {
-                pagina.xaml_cpf.Text,
-                pagina.xaml_aniversariante.Text,
-                pagina.xaml_idade.Text,
+                pagina.xaml_cpf_cliente.Text,
+                pagina.xaml_cpf_aniversariante.Text,
+                pagina.xaml_nome_aniversariante.Text,
+                pagina.xaml_sobrenome_aniversariante.Text,
+                pagina.xaml_data_nascimento.Text,
                 pagina.xaml_tema.Text,
                 pagina.xaml_data.Text,
                 pagina.xaml_horario.Text,
@@ -77,8 +79,10 @@ namespace Monte_Castelo.Data
 
             Regex[] regex = {
                 RegexER.regex_cpf,
+                RegexER.regex_cpf,
+                RegexER.regex_nome,
                 RegexER.regex_nomes,
-                RegexER.regex_numeros,
+                RegexER.regex_data,
                 RegexER.regex_descricao,
                 RegexER.regex_data,
                 RegexER.regex_hora,

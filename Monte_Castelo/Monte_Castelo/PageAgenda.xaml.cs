@@ -1,5 +1,6 @@
 ﻿using Monte_Castelo.Config;
 using Monte_Castelo.Data;
+using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -173,6 +174,7 @@ namespace Monte_Castelo
         public string Tema { get; set; }
         public string Convidados { get; set; }
         public string Pacote { get; set; }
+        public string ValorFinal { get; set; }
     }
 
     public class SalvarEvento
@@ -189,9 +191,10 @@ namespace Monte_Castelo
 
         private static void LimparCampos(PageAgenda pagina)
         {
-            pagina.xaml_cpf.Clear();
-            pagina.xaml_aniversariante.Clear();
-            pagina.xaml_idade.Clear();
+            pagina.xaml_cpf_cliente.Clear();
+            pagina.xaml_cpf_aniversariante.Clear();
+            pagina.xaml_nome_aniversariante.Clear();
+            pagina.xaml_sobrenome_aniversariante.Clear();
             pagina.xaml_tdf_outro.Clear();
             pagina.xaml_tema.Clear();
             pagina.xaml_horario.Clear();
@@ -209,7 +212,7 @@ namespace Monte_Castelo
 
         private static bool AdicionarAoBD(PageAgenda pagina)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(Acesso.conection))
+            using (NpgsqlConnection conn = new NpgsqlConnection(Acesso.conection))
             {
                 conn.Open();
 
@@ -217,23 +220,7 @@ namespace Monte_Castelo
                 {
                     try
                     {
-                        BancoDeDados.CriarTabelasAgendamento(conn);
-
-                        bool cliente = BancoDeDados.VerificarSeClienteExiste(conn, pagina.xaml_cpf.Text);
-                        if (!cliente)
-                        {
-                            MessageBox.Show("Cadastre o cliente antes de agendar uma festa.");
-                            return false;
-                        }
-
-                        bool disponivel = BancoDeDados.VerificarDisponibilidaDeData(conn, pagina.xaml_data.Text);
-                        if (!disponivel)
-                        {
-                            MessageBox.Show("Data indisponível.");
-                            return false;
-                        }
-
-                        BancoDeDados.SalvarClientePagamentoFesta(conn, pagina);
+                        BancoDeDados.SalvarFesta(conn, pagina);
 
                         transaction.Commit();
                     }

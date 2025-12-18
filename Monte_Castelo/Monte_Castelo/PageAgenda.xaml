@@ -35,6 +35,7 @@
                     <GridViewColumn Header="Tema" DisplayMemberBinding="{Binding Tema}" />
                     <GridViewColumn Header="Convidados" DisplayMemberBinding="{Binding Convidados}" />
                     <GridViewColumn Header="Pacote" DisplayMemberBinding="{Binding Pacote}" />
+                    <GridViewColumn Header="Valor" DisplayMemberBinding="{Binding ValorFinal}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -72,17 +73,27 @@
                 <!-- Linha 1 informações do cliente -->
                 <StackPanel Grid.Row="0" Grid.Column="0">       <!-- Coluna 1 -->
                     <TextBlock Text="CPF do Cliente" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_cpf" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_cpf_cliente" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
                 
                 <StackPanel Grid.Row="0" Grid.Column="1">       <!-- Coluna 2 -->
-                    <TextBlock Text="Aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_aniversariante" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="CPF do aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_cpf_aniversariante" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Row="0" Grid.Column="2">       <!-- Coluna 3 -->
-                    <TextBlock Text="Idade do Aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
-                    <TextBox x:Name="xaml_idade" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                    <TextBlock Text="Nome do aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_nome_aniversariante" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="3">       <!-- Coluna 4 -->
+                    <TextBlock Text="Sobrenome do aniversariante" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <TextBox x:Name="xaml_sobrenome_aniversariante" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="4">       <!-- Coluna 5 -->
+                    <TextBlock Text="Data de nascimento" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
+                    <DatePicker x:Name="xaml_data_nascimento" Style="{StaticResource PageAgenda_DatePickerDeNovoEvento}"/>
                 </StackPanel>
 
                 
@@ -121,7 +132,7 @@
                     <DatePicker x:Name="xaml_data" Style="{StaticResource PageAgenda_DatePickerDeNovoEvento}"/>
                 </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="5">       <!-- Coluna 5 -->
+                <StackPanel Grid.Row="1" Grid.Column="5">       <!-- Coluna 6 -->
                     <TextBlock Text="Horário" Style="{StaticResource PageAgenda_TextBlockDeNovoEvento}"/>
                     <TextBox x:Name="xaml_horario" Style="{StaticResource PageAgenda_TextBoxDeNovoEvento}"/>
                 </StackPanel>

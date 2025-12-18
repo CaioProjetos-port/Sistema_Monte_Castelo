@@ -128,13 +128,6 @@ namespace Monte_Castelo
                 {
                     try
                     {
-                        bool cliente = BancoDeDados.VerificarSeClienteExiste(conn, pagina.xaml_cpf.Text);
-                        if (!cliente)
-                        {
-                            MessageBox.Show("Já há um cliente cadastrado com esse CPF.");
-                            return false;
-                        }
-
                         BancoDeDados.SalvarCliente(conn, pagina);
 
                         transaction.Commit();
