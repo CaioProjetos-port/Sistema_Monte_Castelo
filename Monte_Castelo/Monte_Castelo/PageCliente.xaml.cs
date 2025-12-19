@@ -29,10 +29,36 @@ namespace Monte_Castelo
         public PageCliente()
         {
             InitializeComponent();
+            CarregarDadosSemTravar();
+        }
+
+        private async void CarregarDadosSemTravar()
+        {
+            // Opcional: Mostre uma barrinha de carregamento ou mude o cursor
+            Mouse.OverrideCursor = Cursors.Wait;
+
+            try
+            {
+                // Roda o acesso ao banco em uma Thread separada
+                await Task.Run(() =>
+                {
+                    // O código pesado fica aqui
+                    // CUIDADO: Você não pode mexer na UI (elementos xaml) aqui dentro diretamente
+                    SalvarCliente.IniciarListaDeClientes(this);
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar: " + ex.Message);
+            }
+            finally
+            {
+                Mouse.OverrideCursor = null;
+            }
         }
 
         // Função para completar os dados da ListView
-        private void ListaDeFestas_Loaded(object sender, RoutedEventArgs e)
+        private void ListaDeClientes_Loaded(object sender, RoutedEventArgs e)
         {
             AjustarColunas(xaml_listaClientes);
         }
@@ -58,40 +84,65 @@ namespace Monte_Castelo
 
         }
 
-        // Função para salvar a ultima tecla pressionada no campo celular
+        // Função para salvar a ultima tecla pressionada no campo celular e cpf
         private void KeyPress(object sender, KeyEventArgs e)
         {
             _ultimaTecla = e.Key;
         }
 
         // Função para formatar o campo celular em tempo real
-        private void Formatacao_celular(object sender, TextChangedEventArgs e)
+        private void formatarCelular(object sender, TextChangedEventArgs e)
         {
-            string numero = xaml_celular.Text;
+            string numero = xaml_celular_cliente.Text;
 
             if (numero.Length > 0)
-                xaml_celular.Text = FuncoesDeVerificacao.FormatarNumCelular(numero, _ultimaTecla);
-            xaml_celular.CaretIndex = xaml_celular.Text.Length;
+                xaml_celular_cliente.Text = FuncoesDeVerificacao.formatarNumCelular(numero, _ultimaTecla);
+            xaml_celular_cliente.CaretIndex = xaml_celular_cliente.Text.Length;
         }
 
-        private void Formatacao_cpf(object sender, TextChangedEventArgs e)
+        // Função para formatar o campo cpf em tempo real
+        private void formatarCpf(object sender, TextChangedEventArgs e)
         {
-            string cpf = xaml_cpf.Text;
+            string cpf = xaml_cpf_cliente.Text;
 
             if (cpf.Length > 0)
             
-                xaml_cpf.Text = FuncoesDeVerificacao.FormatarCpf(cpf, _ultimaTecla);
-            xaml_cpf.CaretIndex = xaml_cpf.Text.Length;
+                xaml_cpf_cliente.Text = FuncoesDeVerificacao.formatarCpf(cpf, _ultimaTecla);
+            xaml_cpf_cliente.CaretIndex = xaml_cpf_cliente.Text.Length;
+        }
+
+        // Função para formatar o campo cpf em tempo real
+        private void formatarCep(object sender, TextChangedEventArgs e)
+        {
+            string cpf = xaml_cep.Text;
+
+            if (cpf.Length > 0)
             
+                xaml_cep.Text = FuncoesDeVerificacao.formatarCep(cpf, _ultimaTecla);
+            xaml_cep.CaretIndex = xaml_cep.Text.Length;
         }
 
         // Função para salvar o cliente no banco de dados
         private void salvarCliente(object sender, RoutedEventArgs e)
         {
+            if (validarCliente() == 1)
+                return;
 
             SalvarCliente.Salvar(this);
         }
 
+        private int validarCliente()
+        {
+            string msg_erro = FuncoesDeVerificacao.VerificarCamposDoCliente(this);
+
+            if (msg_erro != null)
+            {
+                MessageBox.Show(msg_erro);
+                return 1;
+            }
+
+            return 0;
+        }
     }
 
     public class SalvarCliente
@@ -108,47 +159,48 @@ namespace Monte_Castelo
 
         private static void LimparCampos(PageCliente pagina)
         {
-            pagina.xaml_cpf.Clear();
-            pagina.xaml_nome.Clear();
-            pagina.xaml_sobreNome.Clear();
-            pagina.xaml_celular.Clear();
+            pagina.xaml_cpf_cliente.Clear();
+            pagina.xaml_nome_cliente.Clear();
+            pagina.xaml_sobrenome_cliente.Clear();
+            pagina.xaml_celular_cliente.Clear();
+            pagina.xaml_email_cliente.Clear();
             pagina.xaml_cep.Clear();
-            pagina.xaml_numCasa.Clear();
+            pagina.xaml_cidade.Clear();
+            pagina.xaml_bairro.Clear();
+            pagina.xaml_logradouro.Clear();
+            pagina.xaml_numero.Clear();
             pagina.xaml_complemento.Clear();
-            pagina.xaml_email.Clear();
         }
 
         private static bool AdicionarAoBD(PageCliente pagina)
         {
-            using (NpgsqlConnection conn = new NpgsqlConnection(Acesso.conection))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoBD.StringConexao))
             {
                 conn.Open();
-
-                using (var transaction = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        BancoDeDados.SalvarCliente(conn, pagina);
-
-                        transaction.Commit();
-                    }
-                    catch
-                    {
-                        transaction.Rollback();
-                    }
-                }
+                BancoDeDados.SalvarCliente(conn, pagina);
             }
-
             return true;
         }
 
         public static void IniciarListaDeClientes(PageCliente pagina)
         {
-            ObservableCollection<Festa> listaDeFestas = new ObservableCollection<Festa>();
+            ObservableCollection<Cliente> listaDeClientes = new ObservableCollection<Cliente>();
 
-            listaDeFestas = BancoDeDados.RetornarInformacoesDaListaDeFestas(listaDeFestas);
+            listaDeClientes = BancoDeDados.RetornarListaDeClientes(listaDeClientes);
 
-            pagina.xaml_listaClientes.ItemsSource = listaDeFestas;
+            pagina.Dispatcher.Invoke(() =>
+            {
+                pagina.xaml_listaClientes.ItemsSource = listaDeClientes;
+            });
         }
+    }
+
+    public class Cliente
+    {
+        public int id { get; set; }
+        public string nome { get; set; }
+        public string celular { get; set; }
+        public string email { get; set; }
+        public string cpf { get; set; }
     }
 }

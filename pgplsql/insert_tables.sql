@@ -28,7 +28,7 @@ BEGIN
 	RETURNING id_endereco INTO v_id_endereco;
 
 	-- Insert do Cliente, retorna seu id
-	INSERT INTO Cliente (cpf, nome, sobrenome, celular, email, id_endereco)
+	INSERT INTO Cliente (cpf_cliente, nome_cliente, sobrenome_cliente, celular_cliente, email_cliente, id_endereco)
 	VALUES (p_cpf, p_nome, p_sobrenome, p_celular, p_email, v_id_endereco)
 	RETURNING id_cliente INTO v_id_cliente;
 

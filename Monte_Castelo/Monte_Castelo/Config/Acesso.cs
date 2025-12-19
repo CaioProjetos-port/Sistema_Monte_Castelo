@@ -7,8 +7,20 @@ using System.Threading.Tasks;
 
 namespace Monte_Castelo.Config
 {
-    internal class Acesso
+    internal class ConexaoBD
     {
-        public static string conection = "Data Source=monte_castelo.db;Version=3;";
+        private static string servidor = "localhost";
+        private static string porta = "5432";
+        private static string usuario = "postgres";
+        private static string senha = "Caio2423!";
+        private static string nomeBanco = "monte_castelo";
+
+        public static string StringConexao
+        {
+            get
+            {
+                return $"Host={servidor};Port={porta};Database={nomeBanco};Username={usuario};Password={senha}";
+            }
+        }
     }
 }

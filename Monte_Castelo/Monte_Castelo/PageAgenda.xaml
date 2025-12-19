@@ -43,7 +43,7 @@
         <!-- barra de opções -->
         <Expander Grid.Row="2"
                   x:Name="xaml_expander_novo_evento"
-                  Header="Novo Evento"
+                  Header="Agendar Evento"
                   HorizontalAlignment="Stretch"
                   IsExpanded="False"
                   Background="LightBlue"

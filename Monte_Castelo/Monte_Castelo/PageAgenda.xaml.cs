@@ -59,7 +59,6 @@ namespace Monte_Castelo
             }
 
             xaml_lista_de_festas.SizeChanged += (s, e) => AjustarColunas(xaml_lista_de_festas);
-
         }
 
         // Botão para calcular o valor da festa
@@ -212,7 +211,7 @@ namespace Monte_Castelo
 
         private static bool AdicionarAoBD(PageAgenda pagina)
         {
-            using (NpgsqlConnection conn = new NpgsqlConnection(Acesso.conection))
+            using (NpgsqlConnection conn = new NpgsqlConnection(ConexaoBD.StringConexao))
             {
                 conn.Open();
 

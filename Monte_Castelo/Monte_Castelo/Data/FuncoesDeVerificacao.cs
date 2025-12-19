@@ -11,58 +11,6 @@ namespace Monte_Castelo.Data
 {
     internal class FuncoesDeVerificacao
     {
-        public static string VerificarCamposNumericos(PageAgenda pagina)
-        {
-            string[] campos = {
-                pagina.xaml_qntd_convidados.Text,
-                pagina.xaml_qntd_convidados_np.Text,
-                pagina.xaml_extras_valor.Text,
-                pagina.xaml_valor_entrada.Text,
-                pagina.xaml_num_parcelas.Text,
-                pagina.xaml_valor_desconto.Text
-            };
-
-            Regex[] regex = {
-                RegexER.regex_numeros,
-                RegexER.regex_numeros,
-                RegexER.regex_valores,
-                RegexER.regex_valores,
-                RegexER.regex_numeros,
-                RegexER.regex_valores_percentuais,
-            };
-
-            string convidados = campos[0];
-            string convidados_np = campos[1];
-            string desconto = campos[5];
-
-            for (int i = 0; i < campos.Length; i++)
-            {
-                string msg = ValidarRegex(campos[i], regex[i], i + 9);
-                if (msg != null)
-                    return msg;
-            }
-
-            int convidados_int = int.Parse(convidados);
-            int convidados_np_int = int.Parse(convidados_np);
-            if (desconto.Contains("%"))
-            {
-                desconto = desconto.Replace("%", "");
-                float desconto_float = float.Parse(desconto);
-
-                if (desconto_float < 0 || desconto_float > 100)
-                    return "Valor do desconto inválido";
-
-            }
-
-            if (convidados_int < 50)
-                return "Não há pacotes para menos de 50 convidados";
-
-            if ((convidados_int - convidados_np_int) < 50)
-                return "Não há pacotes para menos de 50 convidados";
-
-            return null;
-        }
-
         public static string VerificarCamposDeDados(PageAgenda pagina)
         {
             string[] campos = {
@@ -96,7 +44,7 @@ namespace Monte_Castelo.Data
 
             for (int i = 0; i < campos.Length; i++)
             {
-                string msg = ValidarRegex(campos[i], regex[i], i);
+                string msg = ValidarRegex(campos[i], regex[i], i, "dados_festa");
                 if (msg != null)
                     return msg;
             }
@@ -105,7 +53,7 @@ namespace Monte_Castelo.Data
                 return "insira o tipo de festa";
             else if (tipoFesta == "Outro" && tipoFestaOutro != "")
             {
-                string msg = ValidarRegex(tipoFestaOutro, regex[3], 8);
+                string msg = ValidarRegex(tipoFestaOutro, regex[3], 0, "tipo_de_festa");
                 if (msg != null)
                     return msg;
             }
@@ -118,7 +66,97 @@ namespace Monte_Castelo.Data
             return null;
         }
 
-        public static string FormatarNumCelular(string celular, Key k)
+        public static string VerificarCamposNumericos(PageAgenda pagina)
+        {
+            string[] campos = {
+                pagina.xaml_qntd_convidados.Text,
+                pagina.xaml_qntd_convidados_np.Text,
+                pagina.xaml_extras_valor.Text,
+                pagina.xaml_valor_entrada.Text,
+                pagina.xaml_num_parcelas.Text,
+                pagina.xaml_valor_desconto.Text
+            };
+
+            Regex[] regex = {
+                RegexER.regex_numeros,
+                RegexER.regex_numeros,
+                RegexER.regex_valores,
+                RegexER.regex_valores,
+                RegexER.regex_numeros,
+                RegexER.regex_valores_percentuais,
+            };
+
+            string convidados = campos[0];
+            string convidados_np = campos[1];
+            string desconto = campos[5];
+
+            for (int i = 0; i < campos.Length; i++)
+            {
+                string msg = ValidarRegex(campos[i], regex[i], i, "valores_festa");
+                if (msg != null)
+                    return msg;
+            }
+
+            int convidados_int = int.Parse(convidados);
+            int convidados_np_int = int.Parse(convidados_np);
+            if (desconto.Contains("%"))
+            {
+                desconto = desconto.Replace("%", "");
+                float desconto_float = float.Parse(desconto);
+
+                if (desconto_float < 0 || desconto_float > 100)
+                    return "Valor do desconto inválido";
+
+            }
+
+            if (convidados_int < 50)
+                return "Não há pacotes para menos de 50 convidados";
+
+            if ((convidados_int - convidados_np_int) < 50)
+                return "Não há pacotes para menos de 50 convidados";
+
+            return null;
+        }
+
+        public static string VerificarCamposDoCliente(PageCliente pagina)
+        {
+            string[] campos = {
+                pagina.xaml_cpf_cliente.Text,
+                pagina.xaml_nome_cliente.Text,
+                pagina.xaml_sobrenome_cliente.Text,
+                pagina.xaml_celular_cliente.Text,
+                pagina.xaml_email_cliente.Text,
+                pagina.xaml_cep.Text,
+                pagina.xaml_cidade.Text,
+                pagina.xaml_bairro.Text,
+                pagina.xaml_logradouro.Text,
+                pagina.xaml_numero.Text,
+            };
+
+            Regex[] regex = {
+                RegexER.regex_cpf,
+                RegexER.regex_nome,
+                RegexER.regex_nomes,
+                RegexER.regex_telefone,
+                RegexER.regex_email,
+                RegexER.regex_cep,
+                RegexER.regex_descricao,
+                RegexER.regex_descricao,
+                RegexER.regex_descricao,
+                RegexER.regex_descricao
+            };
+
+            for (int i = 0; i < campos.Length; i++)
+            {
+                string msg = ValidarRegex(campos[i], regex[i], i, "dados_cliente");
+                if (msg != null)
+                    return msg;
+            }
+
+            return null;
+        }
+
+        public static string formatarNumCelular(string celular, Key k)
         {
             if (celular.Length == 2 && k != Key.Back)
                 celular = "(" + celular.Substring(0, 2) + ")";
@@ -148,27 +186,38 @@ namespace Monte_Castelo.Data
             // (88)9.8155-5424
         }
 
-        public static string FormatarCpf(string cpf, Key k)
+        public static string formatarCpf(string cpf, Key k)
         {
-            if (cpf.Length == 3 && k != Key.Back)
-                cpf = cpf + ".";
-
-            else if (cpf.Length == 7 && k != Key.Back)
-                cpf = cpf + ".";
-
-            else if (cpf.Length == 11 && k != Key.Back)
-                cpf = cpf + "-";
-
-            if (cpf[3] != '.')
+            if (k == Key.Back)
+                return cpf;
+            
+            if (cpf.Length > 3 && cpf[3] != '.')
                 cpf = cpf.Insert(3, ".");
 
-            if (cpf[7] != '.')
+            if (cpf.Length > 7 && cpf[7] != '.')
                 cpf = cpf.Insert(7, ".");
 
-            if (cpf[11] != '-')
+            if (cpf.Length > 11 && cpf[11] != '-')
                 cpf = cpf.Insert(11, "-");
 
+            if (cpf.Length > 14)
+                return cpf.Substring(0, 14);
+
             return cpf;
+        }
+
+        public static string formatarCep(string cep, Key k)
+        {
+            if (k == Key.Back)
+                return cep;
+
+            if (cep.Length > 5 && cep[5] != '-')
+                cep = cep.Insert(5, "-");
+
+            if (cep.Length > 9)
+                return cep.Substring(0, 9);
+
+            return cep;
         }
 
         public static float ValorDoPacoteKids(int convidados_qntd)
@@ -323,27 +372,57 @@ namespace Monte_Castelo.Data
             return pacote_vlr;
         }
 
-        private static string ValidarRegex(string campo, Regex regex, int index)
+        private static string ValidarRegex(string campo, Regex regex, int index, string verificar)
         {
-            string[] erros = {
-                "CPF do cliente inválido", // indice 0, primeiro do loop campo de dados
-                "Nome do aniversariante inválido",
-                "Idade inválida",
-                "Tema inválido",
-                "Data inválida",
-                "Hora inválida",
-                "Quantidade de crianças inválida", 
-                "", // indice 7, ultimo do loop campo de dados
-                "Preencha o tipo de festa", // indice 8, campo de dados aparte
-                "Quantidade de convidados inválida", // indice 9, primeiro do loop campo numerico
-                "Quantidade de convidados não pagantes inválida",
-                "Valor dos extras inválida",
-                "Valor da entrada inválida",
-                "Quantidade das parcelas inválida",
-                "Valor do desconto inválido" // indice 14, ultimo do loop campo numerico
-            };
+            string[] erros;
+            if (verificar == "dados_festa")
+                erros = new string[] {
+                "CPF do cliente inválido",
+                    "CPF do aniversariante inválido",
+                    "Nome do aniversariante inválido",
+                    "Sobrenome do aniversariante inválido",
+                    "Idade inválida",
+                    "Tema inválido",
+                    "Data inválida",
+                    "Hora inválida",
+                    "Quantidade de crianças inválida", 
+                };
 
-            Match match = regex.Match(campo);
+            else if (verificar == "valores_festa")
+                erros = new string[] {
+                    "Quantidade de convidados inválida",
+                    "Quantidade de convidados não pagantes inválida",
+                    "Valor dos extras inválida",
+                    "Valor da entrada inválida",
+                    "Quantidade das parcelas inválida",
+                    "Valor do desconto inválido"
+                };
+
+
+            else if (verificar == "dados_cliente")
+                erros = new string[] {
+                    "CPF inválido",
+                    "Nome inválido",
+                    "Sobrenome inválido",
+                    "Celular inválido",
+                    "Email inválido",
+                    "CEP inválido",
+                    "Cidade inválida",
+                    "Bairro inválido",
+                    "Logrado inválido",
+                    "Número inválido",
+                    "Complemento inválido"
+                };
+
+            else if (verificar == "tipo_de_festa")
+                erros = new string[] {
+                    "Preencha o tipo de festa"
+                };
+
+            else
+                return "erro desconhecido";
+
+                Match match = regex.Match(campo);
             if (!match.Success)
                 return erros[index];
 

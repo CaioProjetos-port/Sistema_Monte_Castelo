@@ -10,8 +10,10 @@ namespace Monte_Castelo.Config
     internal class RegexER
     {
             public static Regex regex_cpf = new Regex(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$");
+            public static Regex regex_cep= new Regex(@"^\d{5}-\d{3}$");
             public static Regex regex_nomes = new Regex(@"^[\p{L}]+\s[\p{L}]+(\s?[\p{L}]*)*$");
             public static Regex regex_nome = new Regex(@"^[\p{L}]+(\s?[\p{L}]*)*$");
+            public static Regex regex_telefone = new Regex(@"^\(\d{2}\)\d\.\d{4}-\d{4}$");
             public static Regex regex_email = new Regex(@"^[\w\.-]+@[\w\.-]+\.\w{2,}$");
             public static Regex regex_endereco = new Regex(@"^[\p{L}\d\s,.\-ºª]+$");
             public static Regex regex_descricao = new Regex(@"^[\p{L}\d\s,.\-!?\(\)]{1,200}$");

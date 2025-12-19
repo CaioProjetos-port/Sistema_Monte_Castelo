@@ -49,17 +49,16 @@ namespace Monte_Castelo.Data
         {
             using (var cmd = conn.CreateCommand())
             {
-                // Salvar Cliente
                 cmd.CommandText = "SELECT cadastrar_cliente_completo(@cpf_cliente, @nome_cliente, @sobrenome_cliente, @celular_cliente, @email_cliente, @cep, @logradouro, @numero, @complemento, @bairro, @cidade)";
 
-                cmd.Parameters.AddWithValue("@cpf_cliente", pagina.xaml_cpf.Text);
-                cmd.Parameters.AddWithValue("@nome_cliente", pagina.xaml_nome.Text);
-                cmd.Parameters.AddWithValue("@sobreNome_cliente", pagina.xaml_sobreNome.Text);
-                cmd.Parameters.AddWithValue("@celular_cliente", pagina.xaml_celular.Text);
-                cmd.Parameters.AddWithValue("@email_cliente", pagina.xaml_email.Text);
+                cmd.Parameters.AddWithValue("@cpf_cliente", pagina.xaml_cpf_cliente.Text);
+                cmd.Parameters.AddWithValue("@nome_cliente", pagina.xaml_nome_cliente.Text);
+                cmd.Parameters.AddWithValue("@sobrenome_cliente", pagina.xaml_sobrenome_cliente.Text);
+                cmd.Parameters.AddWithValue("@celular_cliente", pagina.xaml_celular_cliente.Text);
+                cmd.Parameters.AddWithValue("@email_cliente", pagina.xaml_email_cliente.Text);
                 cmd.Parameters.AddWithValue("@cep", pagina.xaml_cep.Text);
                 cmd.Parameters.AddWithValue("@logradouro", pagina.xaml_logradouro.Text);
-                cmd.Parameters.AddWithValue("@numCasa", pagina.xaml_numCasa.Text);
+                cmd.Parameters.AddWithValue("@numero", pagina.xaml_numero.Text);
                 cmd.Parameters.AddWithValue("@complemento", pagina.xaml_complemento.Text);
                 cmd.Parameters.AddWithValue("@bairro", pagina.xaml_bairro.Text);
                 cmd.Parameters.AddWithValue("@cidade", pagina.xaml_cidade.Text);
@@ -69,7 +68,7 @@ namespace Monte_Castelo.Data
 
         public static ObservableCollection<Festa> RetornarInformacoesDaListaDeFestas(ObservableCollection<Festa> Festas)
         {
-            string conexao = Acesso.conection;
+            string conexao = ConexaoBD.StringConexao;
 
             using (var conn = new NpgsqlConnection(conexao))
             {
@@ -99,6 +98,37 @@ namespace Monte_Castelo.Data
             }
 
             return Festas;
+        }
+
+        public static ObservableCollection<Cliente> RetornarListaDeClientes(ObservableCollection<Cliente> Clientes)
+        {
+            Clientes.Clear();
+            string conexao = ConexaoBD.StringConexao;
+
+            using (var conn = new NpgsqlConnection(conexao))
+            {
+                conn.Open();
+
+                using (NpgsqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT * FROM view_lista_clientes ORDER BY nome_cliente ASC";
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Clientes.Add(new Cliente {
+                                id = Convert.ToInt32(reader["id_cliente"]),
+                                nome = reader["nome_cliente"].ToString() + " " + reader["sobrenome_cliente"].ToString(),
+                                celular = reader["celular_cliente"].ToString(),
+                                email = reader["email_cliente"].ToString(),
+                                cpf = reader["cpf_cliente"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            return Clientes;
         }
     }
 }
